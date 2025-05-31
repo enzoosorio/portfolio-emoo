@@ -1,0 +1,16 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="hamburguer">
+<mask id="mask0_223_3750" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="80" height="80">
+<g id="clip0_2_160">
+<path id="Vector" d="M79.5 0.5V79.5H0.5V0.5H79.5Z" fill="white" stroke="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_223_3750)">
+<g id="Group">
+<path id="Vector_2" d="M55.7446 1.73335H24.2554C11.8168 1.73335 1.73334 11.8168 1.73334 24.2554V55.7446C1.73334 68.1832 11.8168 78.2666 24.2554 78.2666H55.7446C68.1831 78.2666 78.2666 68.1832 78.2666 55.7446V24.2554C78.2666 11.8168 68.1831 1.73335 55.7446 1.73335Z" stroke="#3AB7D0" stroke-width="4"/>
+<path id="Vector_3" d="M23.8625 30H56.1375" stroke="#3AB7D0" stroke-width="4"/>
+<path id="Vector_4" d="M23.8625 50.0596H56.1375" stroke="#3AB7D0" stroke-width="4"/>
+</g>
+</g>
+</g>
+</svg>

@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import '@fontsource/ibm-plex-mono';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource/sigmar';
+
+@font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('./fonts/IBMPlexMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+}
+
+*{
+    cursor: url('/images/cursor-default.png'), default;
+    /* cursor: url('/images/cursor-pointer.png'), pointer; */
+}
+
+
+@theme{
+    --font-ibm-plex-mono: 'IBM Plex Mono', monospace;
+    --font-space-grotesk: 'Space Grotesk Variable', sans-serif;
+    --font-sigmar: 'Sigmar', cursive;
+    --shadow-custom-primary : 1px -1px 26px 6px rgba(58, 183, 208, 0.65);
+    --color-primary-blue : #3AB7D0;
+    --color-primary-purple : #B154C4;
+}
+
+.animation-3d{
+    transform-style: preserve-3d;
+}
+
+.text-stagger{
+    cursor: url('/images/cursor-pointer.png'), pointer;
+}
+
+a, button, [role="button"], .cursor-pointer {
+  cursor: url('/images/cursor-pointer.png'), pointer;
+}
+
