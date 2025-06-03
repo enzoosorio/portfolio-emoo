@@ -3,10 +3,18 @@ import gsap from 'gsap'
 import { useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 
-interface MenuItemsProps{
-    isMenuOpen : boolean
+interface MenuItem {
+  title: string;
+  cName: string;
+  url: string;
 }
-export const MenuItems = ({isMenuOpen}: MenuItemsProps) => {
+
+interface MenuItemsProps {
+  items: MenuItem[];
+  isMenuOpen: boolean;
+}
+
+export const MenuItems = ({isMenuOpen, items}: MenuItemsProps) => {
 
     gsap.registerPlugin(useGSAP);
 
@@ -36,29 +44,6 @@ export const MenuItems = ({isMenuOpen}: MenuItemsProps) => {
 
             }, [isMenuOpen])
 
-    const menuItems = [
-        {
-            title: 'Home',
-            url: '/',
-            cName: 'nav-links'
-        },
-        {
-            title: 'About me',
-            url: '/about-me',
-            cName: 'nav-links'
-        },
-        {
-            title: 'Projects',
-            url: '/projects',
-            cName: 'nav-links'
-        },
-        {
-            title: 'Contact',
-            url: '/contact',
-            cName: 'nav-links'
-        },
-    ]
-
   return (
     <ul
     className={`
@@ -68,9 +53,11 @@ export const MenuItems = ({isMenuOpen}: MenuItemsProps) => {
     lg:h-0
     opacity-0
     -z-10
-    flex flex-col items-start justify-end gap-6 ${isMenuOpen ? 'flex' : 'hidden'}`}>
+    flex flex-col items-start justify-end gap-6
+    
+    `}>
         {
-            menuItems.map((item, index) => {
+            items.map((item, index) => {
                 return (
                     <li key={index} className='font-sigmar text-2xl text-primary-purple'>
                         <Link to={item.url}>

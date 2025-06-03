@@ -9,14 +9,41 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 export const ThirdPart = () => {
 
-  const [isHovered, setIsHovered] = useState(-1);
+  const [projectDetails, setProjectDetails] = useState({
+    isHovered : -1,
+    isFixed : -1,
+  });
 
   const handleMouseEnter = (index : number) => {
-    setIsHovered(index);
+    if(projectDetails.isFixed === index) return;
+    setProjectDetails({
+      isHovered : index,
+      isFixed : -1,
+    })
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(-1);
+    if(projectDetails.isFixed === -1) return;
+    setProjectDetails({
+      isHovered : -1,
+      isFixed : -1,
+    })
+  }
+
+  const handleClick = (index : number) => {
+    // si se realiza el click en el mismo elemento
+    if(projectDetails.isFixed === index){
+      setProjectDetails({
+        isHovered : -1,
+        isFixed : -1,
+      })
+    }
+    // si se realiza el click en el otro elemento
+      setProjectDetails({
+        isHovered : -1,
+        isFixed : index,
+      })
+    
   }
 
   useGSAP(() => { 
@@ -26,7 +53,7 @@ export const ThirdPart = () => {
       start: "top top",
       end: "bottom bottom",
       scrub: 1,
-      markers: true, 
+      // markers: true, 
     })
 
     let tl = gsap.timeline(
@@ -36,7 +63,7 @@ export const ThirdPart = () => {
           start: "top top",
           end: "center 30%",
           scrub: 1,
-          markers: true,
+          // markers: true,
         },
       }
     )
@@ -58,17 +85,18 @@ export const ThirdPart = () => {
 
 
   return (
-    <section className="custom-cursor third-section mt-10 relative  main-card-container h-[300vh] overflow-y-hidden flex items-start justify-center">
-        <div className="relative third-pinned-container h-screen w-full   px-4 py-8 flex flex-col items-end justify-center gap-8">
-        <div className="relative w-[940px] mt-20 px-4 py-8 flex flex-col items-start justify-center gap-8">
-        <p className="title-third-part text-4xl font-ibm-plex-mono ">He realizado los siguientes proyectos:</p>
+    <section className="custom-cursor third-section mt-10 relative  main-card-container h-[300vh] overflow-hidden flex items-start justify-center">
+        <div className="relative third-pinned-container h-screen w-full px-4 py-8 flex flex-col items-end justify-center gap-4 2xl:gap-8">
+        <div className="relative lg:w-[700px] 2xl:w-[940px] mt-12 px-4  flex flex-col items-start justify-center gap-4 2xl:gap-8">
+        <p className="title-third-part lg:text-2xl 2xl:text-4xl font-ibm-plex-mono ">He realizado los siguientes proyectos:</p>
         <ul className="w-full flex flex-col items-start justify-start">
           {projects_realized.map((project, index) => (
             <li key={index} className="text-project opacity-0 my-4 translate-x-[1000px]">
               <h3 
               onMouseEnter={ () => handleMouseEnter(index) }
               onMouseLeave={handleMouseLeave}
-              className={`text-5xl text-stagger font-space-grotesk uppercase text-primary-blue transition-all duration-300 ${isHovered === index ? "text-primary-purple" : "text-gray-800"}`}>
+              onClick={ () => handleClick(index) }
+              className={`text-5xl text-stagger font-space-grotesk uppercase text-primary-blue transition-all duration-300 ${projectDetails.isHovered === index || projectDetails.isFixed === index ? "text-primary-purple" : "text-gray-800"}`}>
               {project.project_name}
               </h3>
             </li>
@@ -79,7 +107,7 @@ export const ThirdPart = () => {
           {projects_realized.map((project, index) => (
             <CardThirdPart
               index={index}
-              isHovered={isHovered}
+              projectDetails={projectDetails}
               key={index}
               project_description={project.project_description}
               project_image={project.project_image}

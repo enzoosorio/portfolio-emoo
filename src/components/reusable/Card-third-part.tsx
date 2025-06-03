@@ -1,11 +1,16 @@
 import React from "react";
 
+interface ProjectDetails {
+  isHovered : number;
+  isFixed : number;
+}
+
 interface CardThirdPartProps {
   project_description: string;
   project_image: string;
   project_link: string;
   project_github: string;
-  isHovered?: number;
+  projectDetails?: ProjectDetails;
   index : number;
 }
 export const CardThirdPart = ({
@@ -14,7 +19,7 @@ export const CardThirdPart = ({
   project_image,
   project_link,
   index,
-  isHovered
+  projectDetails
 }: CardThirdPartProps) => {
 
   const classForCard = `card-third-part-${index}`
@@ -22,7 +27,7 @@ export const CardThirdPart = ({
   
 
   return (
-    <article className={`${classForCard} absolute top-[60%] -translate-y-1/2 ${isHovered === index ? "left-20" : "left-[-100%]"} rounded-lg w-96 h-max py-4 flex flex-col items-center justify-center gap-4 p-4 shadow-lg transition-all `}>
+    <article className={`${classForCard} absolute top-[55%] -translate-y-1/2 ${projectDetails?.isHovered === index || projectDetails?.isFixed === index ? "left-20" : "left-[-100%]"} rounded-lg w-96 h-max py-4 flex flex-col items-center justify-center gap-4 p-4 shadow-lg transition-all `}>
       <img
         src={project_image}
         alt="project-image"

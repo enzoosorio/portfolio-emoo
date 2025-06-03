@@ -1,8 +1,7 @@
-import React from 'react'
 
 export const FacebookSvg = () => {
   return (
-    <svg width="32" height="33" viewBox="0 0 32 33" fill="none">
+    <svg viewBox="0 0 32 33" fill="none" className="w-8 h-8">
 <g clip-path="url(#clip0_10_1266)">
 <mask id="mask0_10_1266" style={{maskType: 'luminance'}} maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="33">
 <path d="M32 0.5H0V32.5H32V0.5Z" fill="white"/>

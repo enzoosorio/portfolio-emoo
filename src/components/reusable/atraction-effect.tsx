@@ -99,15 +99,15 @@ export const AtractionEffect: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative flex items-center justify-center w-72 h-72 border border-white/25 rounded-2xl p-4 overflow-hidden"
+      className="relative flex items-center justify-center w-40 h-40 md:w-64 md:h-64 lg:w-72 lg:h-72 border border-white/25 rounded-2xl p-4 overflow-hidden"
     >
       <Link
         to={"/about"}
         ref={childRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] text-2xl cursor-pointer text-white font-ibm-plex-mono rounded-full bg-white/25 flex items-center justify-center"
+        className="cursor-pointer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] text-base md:text-2xl text-white font-ibm-plex-mono rounded-full bg-white/25 flex items-center justify-center"
       >
         ACERCA DE MÍ
-        <div className="double-circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-transparent w-1 h-1 rounded-full" />
+        <div className="double-circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-transparent w-1 h-1 cursor-pointer rounded-full" />
         {/* arrow end */}
         <svg
           width="83"

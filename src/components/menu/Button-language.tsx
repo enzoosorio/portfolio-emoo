@@ -1,11 +1,15 @@
-import React from 'react'
+interface ButtonLanguageProps {
+  handleClick: () => void;
+  isLanguageOpen?: boolean;
+}
 
-export const ButtonLanguage = () => {
+export const ButtonLanguage = ({ handleClick, isLanguageOpen }: ButtonLanguageProps) => {
   return (
     <button
-      className={` flex items-center justify-center cursor-pointer rounded-2xl transition-all transform`}
+      onClick={handleClick}
+      className={` ${isLanguageOpen ? "" : ""} z-20 bg-white cursor-pointer flex items-center justify-center rounded-2xl transition-all transform`}
     >
-      <div className={`w-16 h-16 rounded-2xl p-2 flex items-center justify- stroke-primary-blue border-[3px]  border-primary-blue`}>
+      <div className={`w-12 h-12 md:w-12 md:h-12 2xl:w-16 2xl:h-16 rounded-lg 2xl:rounded-2xl p-2 flex items-center justify- stroke-primary-blue border-2 2xl:border-[3px]  border-primary-blue`}>
         <svg
           width="64"
           height="48"

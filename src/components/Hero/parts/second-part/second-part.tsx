@@ -14,7 +14,7 @@
 
       ScrollTrigger.create({
       trigger: ".second-section",
-      start: "top top",
+      start: "top 5%",
       end: "bottom center",
       scrub: true,
       pin: ".second-pinned-containerr",

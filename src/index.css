@@ -13,12 +13,6 @@
     src: url('./fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
 }
 
-*{
-    cursor: url('/images/cursor-default.png'), default;
-    /* cursor: url('/images/cursor-pointer.png'), pointer; */
-}
-
-
 @theme{
     --font-ibm-plex-mono: 'IBM Plex Mono', monospace;
     --font-space-grotesk: 'Space Grotesk Variable', sans-serif;
@@ -38,5 +32,10 @@
 
 a, button, [role="button"], .cursor-pointer {
   cursor: url('/images/cursor-pointer.png'), pointer;
+}
+
+*{
+    cursor: url('/images/cursor-default.png'), default;
+    /* cursor: url('/images/cursor-pointer.png'), pointer; */
 }
 

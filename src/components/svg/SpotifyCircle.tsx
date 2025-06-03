@@ -1,9 +1,7 @@
-import React from 'react'
-
 
 export const SpotifyCircle = ({className} : {className?: string}) => {
   return (
-    <svg width="195" height="198" viewBox="0 0 195 198" fill="none" className={className}>
+    <svg viewBox="0 0 195 198" fill="none" className={className}>
         <g filter="url(#filter0_d_10_1240)">
         <path d="M60.8131 17.4347C39.9594 28.4234 22.9385 46.8098 14.3821 68.7738C5.82592 90.7377 6.00346 116.129 15.6429 137.64C32.2112 174.612 73.2347 195.937 112.963 187.556C146.51 180.479 174.778 156.658 183.508 121.944C193.734 81.278 171.886 35.9791 136.235 17.1616C107.614 2.05488 69.6483 7.19608 46.0762 29.3703" fill="#3AB7D0"/>
         </g>

@@ -5,26 +5,17 @@ import MorphSVGPlugin from "gsap/MorphSVGPlugin";
 gsap.registerPlugin(MorphSVGPlugin);
 
 interface ButtonMenuProps {
-  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isMenuOpen: boolean;
-  isButtonBlue?: boolean;
-  setIsButtonBlue?: React.Dispatch<React.SetStateAction<boolean>>;
+  handleClick: () => void;
 }
 
-export const ButtonMenu = ({
-  setIsMenuOpen,
-  isMenuOpen,
-  isButtonBlue,
-  setIsButtonBlue,
-}: ButtonMenuProps) => {
-  // refs to the two path shapes
+export const ButtonMenu = ({ isMenuOpen, handleClick }: ButtonMenuProps) => {
   const startPath = useRef<SVGPathElement | null>(null);
   const endPath = useRef<SVGPathElement | null>(null);
 
   useEffect(() => {
     if (!startPath.current || !endPath.current) return;
 
-    // animate between shapes
     gsap.to(startPath.current, {
       duration: 0.5,
       morphSVG: isMenuOpen ? endPath.current : startPath.current,
@@ -34,19 +25,16 @@ export const ButtonMenu = ({
 
   return (
     <button
-      className={` flex items-center justify-center cursor-pointer rounded-2xl transition-all transform ${
-        isMenuOpen ? "rotate-90 z-10" : "rotate-0 z-0"
+      className={`relative z-20 flex items-center justify-center cursor-pointer rounded-2xl transition-all transform ${
+        isMenuOpen ? "rotate-90" : "rotate-0"
       }`}
-      onClick={() => {
-        setIsMenuOpen(!isMenuOpen);
-        setIsButtonBlue?.(!isButtonBlue);
-      }}
+      onClick={handleClick}
     >
-      <div className={`w-16 h-16 rounded-2xl bg-amber-800 flex items-center justify- stroke-primary-blue border-[3px] ${isMenuOpen ? "bg-white" : "bg-transparent"} border-primary-blue`}>
+      <div
+        className={`w-12 h-12 cursor-pointer md:w-12 md:h-12 2xl:w-16 2xl:h-16 rounded-lg 2xl:rounded-2xl flex items-center justify-center stroke-primary-blue border-2 2xl:border-[3px] bg-white border-primary-blue`}
+      >
         {/* base hamburger shape (will morph) */}
         <svg
-          width="80"
-          height="80"
           viewBox="0 0 80 80"
           fill="none"
           className="absolute inset-0 w-full h-full"
@@ -58,7 +46,6 @@ export const ButtonMenu = ({
           />
         </svg>
 
-        {/* hidden "X" shape for the morph target */}
         <svg
           width="80"
           height="80"
