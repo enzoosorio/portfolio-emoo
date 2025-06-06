@@ -23,7 +23,6 @@
       onUpdate: (self) => {
         const p = self.progress;
         
-        console.log({p})
         // 1) Animación de salida al subir y pasar 80%
         if (p >= timeEnd && !hasExited) {
           hasExited = true;
