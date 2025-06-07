@@ -103,12 +103,12 @@ export const ThirdPart = () => {
 
   return (
     <section className="custom-cursor third-section mt-10 relative  main-card-container h-[300vh] overflow-hidden flex items-start justify-center">
-      <div className="relative third-pinned-container h-screen w-full px-8 py-8 flex flex-col xl:flex-row-reverse items-center justify-end gap-4 2xl:gap-8">
-        <div className="relative lg:w-[700px] 2xl:w-[940px] h-auto py-2 lg:py-0 lg:h-full mt-12 px-4  flex flex-col items-start justify-center gap-4 2xl:gap-8">
-          <p className="title-third-part text-base lg:text-lg 2xl:text-2xl font-ibm-plex-mono ">
+      <div className="relative third-pinned-container h-screen w-full px-8 py-8 flex flex-col lg:flex-row-reverse items-center justify-end gap-4 2xl:gap-8">
+        <div className="relative w-full lg:w-[700px] 2xl:w-[940px] h-auto py-2 lg:py-0 lg:h-full mt-12 px-4  flex flex-col items-start justify-center gap-4 2xl:gap-8">
+          <p className="title-third-part text-xs sm:text-base lg:text-lg 2xl:text-2xl font-ibm-plex-mono ">
             He realizado los siguientes proyectos:
           </p>
-          <ul className="w-full flex flex-col items-start justify-start shadow-xl p-3">
+          <ul className="w-full grid grid-cols-3 lg:flex gap-2  lg:flex-nowrap lg:flex-col items-start justify-start shadow-xl p-3">
             {projects_realized.map((project) => (
               <li
                 key={project.project_id}
@@ -128,6 +128,9 @@ export const ThirdPart = () => {
             ))}
           </ul>
         </div>
+        <p className="block md:hidden text-primary-purple font-space-grotesk">
+          Scroll vertical
+        </p>
         <div className="flex flex-col items-center w-full xl:w-[80%] h-full xl:h-[90%] justify-center gap-6">
           <ImagesPart
             divImagesChildren={divImagesChildren}

@@ -180,7 +180,6 @@ export const FourthPart = () => {
       start: "top 5%",
       end: "bottom bottom",
       scrub: 1,
-      //   markers: true,
     });
 
     let tl = gsap.timeline({
@@ -254,7 +253,7 @@ export const FourthPart = () => {
                   setActiveButton(index);
                 }}
                 key={button.name}
-                className={`flex items-center justify-center text-xs lg:text-base h-full gap-2 px-4 py-2 ${
+                className={`cursor-pointer flex items-center justify-center text-xs lg:text-base h-full gap-2 px-4 py-2 ${
                   activeButton === index
                     ? "bg-amber-400 rounded-lg"
                     : "bg-transparent"

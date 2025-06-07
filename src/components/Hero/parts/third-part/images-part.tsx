@@ -12,7 +12,7 @@ interface ImagesPartProps {
 export const ImagesPart = ({projectIsFixed, projects_realized, divImagesChildren,divImagesInner, divImagesParents}: ImagesPartProps) => {
   return (
     <div 
-              className="relative images-part bg-gray-200 translate-x-[-1000px] w-full h-full p-1 rounded-lg shadow-lg">
+              className="relative images-part bg-gray-200/10 shadow-xl translate-x-[-1000px] w-full h-full p-1 rounded-lg">
     
                 {projects_realized.map((project, index) => (
                   <div 
@@ -39,7 +39,7 @@ export const ImagesPart = ({projectIsFixed, projects_realized, divImagesChildren
                             key={index}
                             src={img}
                             alt={`${project.project_name} image ${index + 1}`}
-                            className="w-auto h-full p-1 bg-gray-200 object-cover "
+                            className="w-auto h-full p-1 bg-gray-200 object-cover md:object-contain xl:object-cover "
                           />
                         ))}
                 

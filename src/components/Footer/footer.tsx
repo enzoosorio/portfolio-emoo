@@ -22,7 +22,8 @@ export const Footer = () => {
                 <p className="w-max text-sm lg:text-base font-semibold ">Lado personal</p>
               </div>
               {/* facebook */}
-              <svg
+              <a href="https://www.facebook.com/enzo.osorioortiz/" target="_blank" rel="noopener noreferrer">
+                <svg
                 width="49"
                 height="49"
                 viewBox="0 0 49 49"
@@ -38,9 +39,11 @@ export const Footer = () => {
                   fill="white"
                 />
               </svg>
+              </a>
               {/* instagram */}
 
-              <svg
+              <a href="https://www.instagram.com/enzoosorioortiz/" target="_blank" rel="noopener noreferrer">
+                <svg
                 width="48"
                 height="49"
                 viewBox="0 0 48 49"
@@ -105,6 +108,7 @@ export const Footer = () => {
                   </clipPath>
                 </defs>
               </svg>
+              </a>
             </div>
             <div className="relative flex items-center justify-center gap-8">
               <div className="absolute top-28 lg:top-4 -left-12 lg:-left-52 flex items-center justify-center gap-4 font-space-grotesk text-lg w-[120px] lg:w-[220px] ">
@@ -119,7 +123,8 @@ export const Footer = () => {
                 />
               </div>
               {/* linkedin */}
-              <svg
+              <a href="https://www.linkedin.com/in/enzo-osorio-ortiz-9b12782a2/" target="_blank" rel="noopener noreferrer">
+                <svg
                 width="48"
                 height="48"
                 viewBox="0 0 48 48"
@@ -131,8 +136,10 @@ export const Footer = () => {
                   fill="#0A66C2"
                 />
               </svg>
+              </a>
               {/* github */}
-              <svg
+             <a href="https://github.com/enzoosorio" target="_blank" rel="noopener noreferrer">
+               <svg
                 width="48"
                 height="48"
                 viewBox="0 0 48 48"
@@ -153,6 +160,7 @@ export const Footer = () => {
                   </clipPath>
                 </defs>
               </svg>
+             </a>
             </div>
             <div className="relative flex items-center justify-center gap-8">
               <div className="hidden lg:flex absolute top-10 left-0 items-center justify-center gap-4 font-space-grotesk text-lg w-[320px]">
@@ -166,7 +174,8 @@ export const Footer = () => {
                 </p>
               </div>
               {/* spotify */}
-              <svg
+              <a href="https://open.spotify.com/playlist/1E6rqkCDapBrw1UrJ62uQ9?si=3122c3a225074180" target="_blank" rel="noopener noreferrer">
+                <svg
                 width="48"
                 height="48"
                 viewBox="0 0 48 48"
@@ -178,6 +187,7 @@ export const Footer = () => {
                   fill="#1ED760"
                 />
               </svg>
+              </a>
             </div>
           </div>
         </div>

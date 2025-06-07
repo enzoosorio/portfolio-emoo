@@ -13,9 +13,13 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
   const chartRef = useRef<HTMLDivElement | null>(null);
   const barsContainerRef = useRef<HTMLDivElement | null>(null);
   const barsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const triggerRef = useRef<ScrollTrigger>(null);
+  const tlRef = useRef<gsap.core.Timeline>(null);
+
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
-  const [initialScrollLeft, setInitialScrollLeft] = useState(0);
+  const [initialScrollLeft, setInitialScrollLeft] = useState(0); 
+
 
   const categoryKeys = Object.keys(technologies);
   if(categoryKeys.length === 0) return null;
@@ -25,15 +29,42 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
 
   barsRef.current = [];
 
-  useGSAP(
-  () => {
+   useGSAP(() => {
     if (!chartRef.current) return;
 
-    ScrollTrigger.getAll().forEach(trigger => {
-    if (trigger.trigger === chartRef.current) {
-      trigger.kill();
-    }
-  });
+    // inicializo ScrollTrigger
+    triggerRef.current = ScrollTrigger.create({
+      trigger: chartRef.current,
+      start: "top bottom",
+      end: "bottom top",
+      toggleActions: "play none none reverse",
+      markers: true,
+      invalidateOnRefresh: true,
+    });
+
+    // inicializo timeline y lo asocio al trigger
+    tlRef.current = gsap.timeline({ scrollTrigger: triggerRef.current })
+      // animaciones “vacías” iniciales; las completaremos en el siguiente effect
+      .to(".vertical-bar", { height: 0 })
+      .to(".horizontal-bar", { width: 0 });
+
+    // limpieza
+    return () => {
+      triggerRef.current?.kill();
+      tlRef.current?.kill();
+    };
+  }, []);
+
+  useGSAP(
+  () => {
+
+    const tl = tlRef.current;
+    const trig = triggerRef.current;
+    if (!tl || !trig) return;
+
+    const progreso = trig.progress;
+    tl.clear();
+    
 
     const categoryKeys = Object.keys(technologies);
     if (categoryKeys.length === 0) {
@@ -44,24 +75,13 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
 
     const currentSkills = technologies[selectedCategory];
 
-    const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: chartRef.current,      // usar la ref en lugar de la clase
-      start: "top top",
-      end: "bottom 90%",
-      toggleActions: "play none none reverse",
-      markers: true,
-      invalidateOnRefresh: true,
-    }
-  });
-
     tl.to(".vertical-bar", {
       height: () => chartRef.current!.clientHeight * 0.9,
       ease: "power1.out",
       stagger: 0.3,
     });
     tl.to(".horizontal-bar", {
-      width: () => chartRef.current!.clientWidth * 0.9,
+      width: () => chartRef.current!.clientWidth * 0.93,
       ease: "power1.out",
       stagger: 0.3,
     });
@@ -81,6 +101,9 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
         "-=0.25"
       );
     });
+
+     tl.progress(progreso);
+     trig.refresh();
   },
   { dependencies: [activeButton, technologies] }
 );

@@ -47,8 +47,8 @@ export const FifthPart = () => {
     timeline.to(
       ".fake-bg",
       {
-        scaleX: 10,
-        scaleY: 18,
+        scaleX: 15,
+        scaleY: 25,
         duration: 3.5,
       },
       "+=1"
