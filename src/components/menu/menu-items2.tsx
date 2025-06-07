@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 
 interface MenuItem {

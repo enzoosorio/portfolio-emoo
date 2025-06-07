@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Footer = () => {
   return (
         <div className="clippy-footer fixed bottom-0 left-0 right-0 footer w-full flex items-center px-6 lg:px-0 bg-white z-20 justify-center gap-1 lg:gap-40 2xl:gap-[500px] py-16 ">

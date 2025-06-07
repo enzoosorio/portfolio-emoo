@@ -1,7 +1,6 @@
   import gsap from "gsap";
   import { useGSAP } from "@gsap/react";
   import { ScrollTrigger } from "gsap/all";
-  import { AtractionEffect } from "../../../reusable/atraction-effect";
   import { SecondCard } from "./second-card";
 
   export const SecondPart = () => {

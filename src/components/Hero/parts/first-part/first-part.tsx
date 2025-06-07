@@ -1,9 +1,4 @@
-import { FacebookSvg } from '../../../svg/FacebookSvg'
-import { GithubSvg } from '../../../svg/GithubSvg'
-import { LinkedinSvg } from '../../../svg/LinkedinSvg'
 import { GatoYin } from '../../../svg/GatoYin'
-import { letterAnimations } from '../../../../lib/letterAnimations'
-import { SpotifyCircle } from '../../../svg/SpotifyCircle'
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger, MorphSVGPlugin, CustomEase } from 'gsap/all'

@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { useSearchParams } from "react-router";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -18,12 +17,12 @@ export const SelectLanguage = ({
   options,
   isLanguageOpen,
 }: SelectLanguageProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleSearchParams = (lang: string) => {
-    setSearchParams({ lan: lang });
-  };
+  // const handleSearchParams = (lang: string) => {
+  //   setSearchParams({ lan: lang });
+  // };
 
   
   useGSAP(
@@ -108,7 +107,7 @@ export const SelectLanguage = ({
         {options.map((option, idx) => (
           <li
             key={idx}
-            onClick={() => handleSearchParams(option.value)}
+            // onClick={() => handleSearchParams(option.value)}
             className="
               option-item 
               w-full bg-white rounded-lg 
