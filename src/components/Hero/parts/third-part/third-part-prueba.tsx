@@ -79,9 +79,7 @@ export const ThirdPart = () => {
       if (!parentEl || !innerEl || !childEl) return;
 
       const totalContentW = childEl.scrollWidth;
-      // ANCHO REAL VISIBLE DEL “VIEWPORT” INTERNO (SIN PADDING)
       const viewportW = innerEl.offsetWidth;
-      // CUÁNTOS PÍXELES NECESITAMOS MOVER EN X (positivo)
       const scrollLength = totalContentW - viewportW;
 
       gsap.to(childEl, {
@@ -128,9 +126,9 @@ export const ThirdPart = () => {
             ))}
           </ul>
         </div>
-        <p className="block md:hidden text-primary-purple font-space-grotesk">
+        {/* <p className="block md:hidden text-primary-purple font-space-grotesk">
           Scroll vertical
-        </p>
+        </p> */}
         <div className="flex flex-col items-center w-full xl:w-[80%] h-full xl:h-[90%] justify-center gap-6">
           <ImagesPart
             divImagesChildren={divImagesChildren}

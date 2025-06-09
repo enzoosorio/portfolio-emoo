@@ -12,7 +12,7 @@ interface ImagesPartProps {
 export const ImagesPart = ({projectIsFixed, projects_realized, divImagesChildren,divImagesInner, divImagesParents}: ImagesPartProps) => {
   return (
     <div 
-              className="relative images-part bg-gray-200/10 shadow-xl translate-x-[-1000px] w-full h-full p-1 rounded-lg">
+              className="relative images-part bg-gray-200/10 shadow-xl min-h-[300px] h-auto lg:h-full translate-x-[-1000px] overflow-auto w-full p-1 rounded-lg">
     
                 {projects_realized.map((project, index) => (
                   <div 
@@ -20,7 +20,7 @@ export const ImagesPart = ({projectIsFixed, projects_realized, divImagesChildren
                   ref={(el) => {
                         divImagesParents.current[index] = el;
                       }}
-                  className={`custom-scroll absolute top-0 left-0 w-full h-full overflow-y-auto overflow-x-hidden ${projectIsFixed === project.project_id ? "translate-x-0" : "translate-x-[-2000px]"} transition-all`}
+                  className={`custom-scroll absolute top-0 left-0 w-full h-full overflow-y-hidden lg:overflow-y-auto overflow-x-auto lg:overflow-x-hidden ${projectIsFixed === project.project_id ? "translate-x-0" : "translate-x-[-2000px]"} transition-all`}
                   >
                     <div 
                     ref={(el) => {

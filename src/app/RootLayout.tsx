@@ -32,10 +32,13 @@ export default function RootLayout() {
           isLanguageOpen={isLanguageOpen}
           handleClick={handleOpenLanguageMenu}
         />
-        <SelectLanguage
+        {isLanguageOpen && (
+          <SelectLanguage
           isLanguageOpen={isLanguageOpen}
           options={languageOptions}
+          setIsLanguageOpen={setIsLanguageOpen}
         />
+        )}
         <ButtonMenu handleClick={handleOpenItemsMenu} isMenuOpen={isMenuOpen} />
         {/* <MenuItems isMenuOpen={isMenuOpen} items={menuSelectItems} /> */}
         <MenuItems2 isMenuOpen={isMenuOpen} items={menuSelectItems} />

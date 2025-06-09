@@ -1,11 +1,53 @@
+import React, { useState } from "react";
 import { FacebookSvg } from "../../../svg/FacebookSvg";
 import { GithubSvg } from "../../../svg/GithubSvg";
 import { LinkedinSvg } from "../../../svg/LinkedinSvg";
 import { letterAnimations } from "../../../../lib/letterAnimations";
 import { SpotifyCircle } from "../../../svg/SpotifyCircle";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
-export const MainCard = () => {
+gsap.registerPlugin(useGSAP);
+
+interface MainCardProps {
+  progressScroll: number;
+}
+export const MainCard = ({progressScroll} : MainCardProps) => {
+
+  const [letterPhase, setLetterPhase] = useState<number>(0);
+
   const baseWord = "portfolio";
+  const uniqueLetters = "portfli";
+  const steps = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+
+  useGSAP(() => {
+  if (progressScroll <= 0.2 && letterPhase !== 0) {
+    uniqueLetters.split("").forEach((letter) => {
+      gsap.to("#" + letter + "-1", {
+        morphSVG: "#" + letter + "-1-aux",
+        duration: 0.5,
+        ease: "power3.out",
+      });
+    });
+    setLetterPhase(0);
+  }
+
+  steps.forEach((step, index) => {
+    if (progressScroll > step && progressScroll < step + 0.1 && letterPhase !== index + 1) {
+      uniqueLetters.split("").forEach((letter) => {
+        gsap.to("#" + letter + "-" + "1", {
+          morphSVG: "#" + letter + "-" + (index + 2),
+          duration: 0.5,
+          ease: "power3.out",
+        });
+      });
+      setLetterPhase(index + 1);
+    }
+  });
+
+}, [progressScroll]);
+
+
 
   return (
     <>
@@ -39,22 +81,33 @@ export const MainCard = () => {
             <LinkedinSvg />
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center w-full gap-8 pb-6">
+        <div className="relative flex flex-col items-center justify-center w-full gap-8 pb-6">
           <p className="text-sm lg:text-base text-gray-900 font-space-grotesk texttt">
             This is my
           </p>
           {/* svg portfolio words effect */}
-          <div className="flex items-center justify-center gap-1 ">
-            {baseWord.split("").map((letter, _) => {
-              const svgLetterFrame = letterAnimations.find(
+          <div className="portfolio-letters-container relative flex items-center justify-center ">
+            {baseWord.split("").map((letter, index) => {
+              const svgLettersFrame = letterAnimations.find(
                 (part) => part.letter === letter
-              )?.frames[0];
+              )?.frames;
               return (
                 <div
-                  key={letter}
-                  className="flex items-center justify-center gap-1"
+                  key={`${letter}-${index}`}
+                  className="relative items-center justify-center"
                 >
-                  {svgLetterFrame}
+                  {svgLettersFrame?.map((frame, index) => (
+                    <React.Fragment key={index}>
+                      {index === 0 ? (
+                        <div  className="">{frame}</div>
+                        // <p>hola</p>
+                      ) : (
+                        <div className="absolute opacity-0 top-0 left-0 w-full h-full">
+                          {frame}
+                        </div>
+                      )}
+                    </React.Fragment>
+                  ))}
                 </div>
               );
             })}

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { OverlayForLanguage } from "./Overlay-for-language";
 
 export interface Option {
   name: string;
@@ -11,11 +12,14 @@ export interface Option {
 interface SelectLanguageProps {
   options: Option[];
   isLanguageOpen: boolean;
+  setIsLanguageOpen: (isLanguageOpen: boolean) => void;
 }
 
 export const SelectLanguage = ({
   options,
   isLanguageOpen,
+  setIsLanguageOpen
+
 }: SelectLanguageProps) => {
   // const [searchParams, setSearchParams] = useSearchParams();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -94,15 +98,26 @@ export const SelectLanguage = ({
   );
 
   return (
-    <div
+    <OverlayForLanguage>
+      <div
       ref={containerRef}
       className="
-        absolute top-0 -left-48 
+      relative
         w-[250px] overflow-hidden 
         rounded-lg bg-primary-blue
       "
       /* Nota: height y opacity los maneja GSAP, no los forcemos aquí */
     >
+      <button
+      onClick={() => setIsLanguageOpen(false)}
+      className="absolute top-4 right-4 p-2
+      hover:bg-primary-purple
+      hover:text-white
+      text-primary-blue rounded-md font-sigmar cursor-pointer bg-white
+      transition-colors"
+      >
+        X
+      </button>
       <ul className="flex flex-col items-end h-full justify-end gap-2 py-4 px-2">
         {options.map((option, idx) => (
           <li
@@ -114,6 +129,9 @@ export const SelectLanguage = ({
               px-4 py-2 flex items-center gap-2 
               font-sigmar text-lg 2xl:text-2xl 
               text-primary-purple cursor-pointer
+              hover:bg-primary-purple/90
+              hover:text-white
+              transition-colors
             "
           >
             {option.icon && <div>{option.icon}</div>}
@@ -122,5 +140,6 @@ export const SelectLanguage = ({
         ))}
       </ul>
     </div>
+    </OverlayForLanguage>
   );
 };

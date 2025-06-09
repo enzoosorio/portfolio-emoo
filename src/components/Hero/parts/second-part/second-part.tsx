@@ -1,10 +1,10 @@
   import gsap from "gsap";
   import { useGSAP } from "@gsap/react";
-  import { ScrollTrigger } from "gsap/all";
+  import { ScrollTrigger, SplitText } from "gsap/all";
   import { SecondCard } from "./second-card";
 
   export const SecondPart = () => {
-    gsap.registerPlugin(ScrollTrigger, useGSAP);
+    gsap.registerPlugin(ScrollTrigger, useGSAP, SplitText);
 
     useGSAP(() => {
       let hasExited = false;
@@ -19,7 +19,7 @@
       pin: ".second-pinned-containerr",
       pinSpacing: true,
 
-      onUpdate: (self) => {
+       onUpdate: (self) => {
         const p = self.progress;
         
         // 1) Animación de salida al subir y pasar 80%
@@ -71,22 +71,20 @@
             duration: 0.5,
             ease: "power1.out",
           });
+          gsap.to(".second-pinned-containerr", {
+            duration: 2,
+            width: "100%",
+            height: "100%",
+            transformOrigin: "center center",
+            ease: "power3.out",
+          });
         }
         // 3) Animación de salida al bajar y pasar 30%
         if (p <= timeStart && !hasExited) {
           hasExited = true;
         }
       },
-    });
-
-      gsap.set(".fake-container", {
-        xPercent: -50,
-        yPercent: 0,
-        transformOrigin: "center center",
-      });
-      gsap.set(".second-pinned-containerr", {
-        transformOrigin: "center center",
-      });
+    }); 
 
       const timelineSecondPart = gsap.timeline({
         scrollTrigger: {
@@ -114,7 +112,7 @@
         ".second-pinned-containerr",
         {
           duration: 2,
-          width: "130%",
+          width: "100%",
           height: "100%",
           transformOrigin: "center center",
           ease: "power3.out",
@@ -150,6 +148,11 @@
         },
         "first+=4.5"
       );
+
+
+      
+
+
     }, []);
 
     return (

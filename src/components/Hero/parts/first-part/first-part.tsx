@@ -3,8 +3,10 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger, MorphSVGPlugin, CustomEase } from 'gsap/all'
 import { MainCard } from './main-card'
+import { useState } from 'react';
 export const FirstPart = () => {
 
+  const [progressScroll, setProgressScroll] = useState<number>(0);
     
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
@@ -20,7 +22,10 @@ export const FirstPart = () => {
       scrub: true,
       pin: ".pinned-container",
       pinSpacing: true,
-     
+      onUpdate : (self) => {
+        const progress = self.progress;
+        setProgressScroll(progress);
+      }
     });
 
     const handballTl = gsap.timeline({
@@ -76,10 +81,21 @@ export const FirstPart = () => {
       start: "top top",
       end: "bottom bottom",
       scrub: true,
-      
-
     }
   })
+
+  gsap.to(".portfolio-letters-container", {
+      y: 350,
+      ease: "back.in",
+      zIndex: -10,
+      duration : 1,
+      scrollTrigger: {
+      trigger: ".main-card-container",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    }
+    })
 
   gsap.to(".cat", {
     y: -20,
@@ -145,13 +161,14 @@ export const FirstPart = () => {
     repeat: -1,
     yoyo: true,
   })
+ 
 
   }, []);
 
   return (
     <section className='main-card-container h-[300vh] '>
      <div className=" pinned-container h-[730px] relative  lg:h-[90vh]  w-full">
-      <MainCard/>
+      <MainCard progressScroll={progressScroll}/>
         <img
           src="/images/Avioncito-papel-removebg-preview-1.png"
           alt="Avioncito"

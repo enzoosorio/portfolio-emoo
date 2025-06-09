@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/all";
 import { TechChart2 } from "./TechChart2";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-type SkillType = "Frontend" | "Backend" | "Fullstack";
+type SkillType = "Frontend" | "Backend" | "Fullstack" | "Design Tool" | "Experiencia" | "Soft Skills";
 
 export type Skill = {
   label: string;
@@ -18,7 +18,7 @@ const forButton = [
     name: "Desarrollador",
     icon: (
       <svg
-        className="svg-pointer fill-black transition-colors"
+        className="svg-pointer fill-black transition-colors w-6 h-6 md:w-8 md:h-8"
         width="31"
         height="31"
         viewBox="0 0 31 31"
@@ -36,7 +36,7 @@ const forButton = [
     name: "Diseñador",
     icon: (
       <svg
-        className="svg-pointer"
+        className="svg-pointer w-6 h-6 md:w-8 md:h-8"
         width="31"
         height="31"
         viewBox="0 0 31 25"
@@ -54,7 +54,7 @@ const forButton = [
     name: "Habilidades blandas",
     icon: (
       <svg
-        className="svg-pointer"
+        className="svg-pointer w-8 h-8 md:w-9 md:h-9"
         width="33"
         height="31"
         viewBox="0 0 33 27"
@@ -123,48 +123,60 @@ const technologies : Record<string, Skill[]> = {
     {
       label: "Figma",
       value: 9,
+      skillType: "Design Tool"
     },
     {
       label: "Sketch",
       value: 7,
+      skillType: "Design Tool"
     },
     {
       label: "Svg maker",
       value: 6,
+      skillType: "Design Tool"
     },
     {
       label: "Adobe",
       value: 4,
+      skillType: "Design Tool"
     },
     {
       label : "Usabilidad",
       value : 8,
+      skillType: "Experiencia"
     },
     {
       label : "Accessibilidad",
       value : 7,
+      skillType: "Experiencia"
     }
   ],
   "Habilidades blandas" : [
     {
       label: "Teamwork",
       value: 7,
+      skillType: "Soft Skills"
     },
     {
       label: "Comunicación",
       value: 8,
+      skillType: "Soft Skills"
     },
     {
       label: "Liderazgo",
       value: 9,
+      skillType: "Soft Skills"
     },
+
     {
       label: "Organización",
       value: 10,
+        skillType: "Soft Skills"
     },
     {
       label: "Empatía",
       value: 8,
+      skillType: "Soft Skills"
     }
   ]
 }
@@ -203,8 +215,8 @@ export const FourthPart = () => {
 
   return (
     <section className="custom-cursor fourth-section mt-10 relative main-card-container h-[300vh] overflow-y-hidden flex items-start justify-center">
-      <div className="relative fourth-pinned-container h-screen w-[90%]  px-4 py-8 flex flex-col items-center lg:items-end justify-center lg:justify-start gap-6 2xl:gap-8">
-        <h3 className="text-2xl 2xl:text-3xl w-full text-center font-ibm-plex-mono  text-black uppercase header-fourth-part">
+      <div className="relative fourth-pinned-container h-screen w-[90%]  px-4 py-8 flex flex-col items-center lg:items-end justify-start mt-8 sm:mt-20 md:mt-0 lg:justify-start gap-6 2xl:gap-8">
+        <h3 className="text-2xl 2xl:text-3xl w-full text-center font-ibm-plex-mono text-black uppercase header-fourth-part">
           Habilidades
         </h3>
         {/* <div className="absolute top-0 left-10 w-[200px] font-space-grotesk flex flex-col items-center justify-center gap-6 p-4 rounded-lg shadow-lg bg-white">
@@ -265,9 +277,7 @@ export const FourthPart = () => {
             ))}
           </div>
         </div>
-        {/* <div className="w-full h-[500px] bg-amber-400 rounded-lg flex items-center justify-center"> */}
-          <TechChart2 technologies={technologies} activeButton={activeButton}/>
-        {/* </div> */}
+        <TechChart2 technologies={technologies} activeButton={activeButton}/>
       </div>
     </section>
   );

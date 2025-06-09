@@ -38,17 +38,14 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
       start: "top bottom",
       end: "bottom top",
       toggleActions: "play none none reverse",
-      markers: true,
       invalidateOnRefresh: true,
+      markers: true,
     });
 
-    // inicializo timeline y lo asocio al trigger
     tlRef.current = gsap.timeline({ scrollTrigger: triggerRef.current })
-      // animaciones “vacías” iniciales; las completaremos en el siguiente effect
       .to(".vertical-bar", { height: 0 })
       .to(".horizontal-bar", { width: 0 });
 
-    // limpieza
     return () => {
       triggerRef.current?.kill();
       tlRef.current?.kill();
@@ -148,7 +145,6 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
       }
     };
 
-    // Registrar eventos nativos en el contenedor
     container.addEventListener("mousedown", handleMouseDown);
     container.addEventListener("mousemove", handleMouseMove);
     container.addEventListener("mouseleave", handleMouseUp);
@@ -164,7 +160,6 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
   }, [isDragging, startX, initialScrollLeft]);
 
   return (
-    // container de la grafica
     <>
       <div
         ref={chartRef}
@@ -179,21 +174,29 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
           return(
             <>
               <div
-                className="flex flex-col items-center justify-end h-full gap-4 pb-2 min-w-28 "
+                className="flex flex-col items-center justify-end h-full gap-4 pb-2 min-w-[72px] lg:min-w-28 "
                 key={technology.label}
               >
                 <div
                   ref={(el) => {
                     barsRef.current[index] = el;
                   }}
-                  className="bar w-24 h-16"
+                  className="bar w-14 lg:w-24 h-16"
                   style={{
                     backgroundColor:
                       technology.skillType === "Frontend"
-                        ? "#FF6384"
+                        ? "#F40F3F"
                         : technology.skillType === "Backend"
                         ? "#36A2EB"
-                        : "#4BC0C0",
+                        : technology.skillType === "Fullstack" 
+                        ? "#4BC0C0" :
+                        technology.skillType === "Design Tool"
+                        ? "#FFE640" :
+                        technology.skillType === "Experiencia"
+                        ? "#FF40EC" :
+                        technology.skillType === "Soft Skills"
+                        ? "#F7611C" :
+                        "#4BC0C0",
                   }}
                 />
                 <p className="selector label-bar text-center font-space-grotesk text-xl">
