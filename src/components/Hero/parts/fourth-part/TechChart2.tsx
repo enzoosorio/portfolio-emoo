@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import React from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import  { useEffect, useRef, useState } from "react";
@@ -39,7 +40,6 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
       end: "bottom top",
       toggleActions: "play none none reverse",
       invalidateOnRefresh: true,
-      markers: true,
     });
 
     tlRef.current = gsap.timeline({ scrollTrigger: triggerRef.current })
@@ -169,10 +169,8 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
           ref={barsContainerRef}
           className="ml-16  cursor-grab w-full flex items-center justify-start overflow-x-auto gap-6 h-full"
         >
-          {currentSkills?.map((technology: Skill, index: number) => 
-          {
-          return(
-            <>
+          {currentSkills?.map((technology: Skill, index: number) => (
+            <React.Fragment key={technology.label}>
               <div
                 className="flex flex-col items-center justify-end h-full gap-4 pb-2 min-w-[72px] lg:min-w-28 "
                 key={technology.label}
@@ -206,9 +204,9 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
               {index === currentSkills.length - 1 && (
                 <div className="gap-4 pb-2 min-w-2"></div>
               )}
-            </>
+            </React.Fragment>
           )
-          }
+          
           )}
         </div>
         <div className="vertical-bar absolute top-0 left-24 w-[3px] h-0 bg-black rounded-2xl" />

@@ -31,7 +31,6 @@ export const SecondCard = () => {
             trigger: ".second-section",
             start: "top top",
             end: "bottom bottom",
-            // markers: true,
             toggleActions: "play none none reverse",
             }
           })
@@ -56,11 +55,7 @@ export const SecondCard = () => {
         crear experiencias digitales dinámicas que no solo destaquen
         visualmente, sino que también impulsen ideas con propósito. Mi meta es
         ayudar a emprendedores y negocios en crecimiento a transformar sus ideas
-        en experiencias digitales claras, atractivas y funcionale
-        <p className="inline-block relative">
-          s.
-          <div className="circle-scale lg:w-1 lg:h-1 bg-white absolute right-[1px] bottom-[19px] z-10 rounded-full" />
-        </p>
+        en experiencias digitales claras, atractivas y funcionales.
       </p>
       <p className="sp-text text-base lg:text-2xl leading-10 text-white text-pretty opacity-0 font-space-grotesk pl-2  md:w-96">
         &#40;Soluciones digitales con un toque de innovación y arte.&#41;

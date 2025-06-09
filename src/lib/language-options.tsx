@@ -9,7 +9,7 @@ export const languageOptions = [
           viewBox="0 0 61 36"
           fill="none"
         >
-          <g clip-path="url(#clip0_247_4121)">
+          <g clipPath="url(#clip0_247_4121)">
             <rect width="61" height="41" fill="white" />
             <rect width="61" height="4" fill="#B22234" />
             <rect y="8" width="61" height="4" fill="#B22234" />

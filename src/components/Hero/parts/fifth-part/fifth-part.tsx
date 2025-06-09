@@ -1,11 +1,43 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Footer } from "../../../Footer/footer";
+import emailjs from '@emailjs/browser';
+
+type FormStates = "default" | "sending" | "success" | "error";
 
 export const FifthPart = () => {
-  const [buttonPressed, setButtonPressed] = useState<boolean>(false);
+  const [formState, setFormState] = useState<FormStates>("default");
+  const form = useRef<HTMLFormElement>(null);
+  const service_id = import.meta.env.VITE_EMAIL_SERVICE_ID;
+  const template_id = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
+  const public_key = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
+
+
+  const sendEmail = (e : React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState("sending");
+
+    if(form.current){
+      emailjs
+      .sendForm(service_id, template_id, form.current, {
+        publicKey: public_key,
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setFormState("success");
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          setFormState("error");
+        },
+      )
+      
+    }
+    
+  };
 
   useGSAP(() => {
     ScrollTrigger.create({
@@ -14,7 +46,6 @@ export const FifthPart = () => {
       end: "bottom bottom",
       scrub: 1,
       pin: ".fifth-pinned-container",
-      // markers: true,
     });
 
     let timeline = gsap.timeline({
@@ -23,7 +54,6 @@ export const FifthPart = () => {
         start: "top top",
         end: "bottom bottom",
         scrub: 1,
-        // markers: true,
       },
     });
 
@@ -98,7 +128,22 @@ export const FifthPart = () => {
             Contacto
           </h3>
         </div>
-        <form className="form-contacto flex flex-col items-center justify-center w-full gap-12 p-2 rounded-sm ">
+        <form ref={form} onSubmit={sendEmail}
+        className="form-contacto flex flex-col items-center justify-center w-full gap-12 p-2 rounded-sm ">
+          <div className="flex items-center justify-center gap-4 rounded-lg">
+            <label
+              className="text-2xl min-w-28 text-white font-space-grotesk"
+              htmlFor="username"
+            >
+              Nombre:
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="name"
+              className=" w-full text-black font-space-grotesk text-lg 2xl:text-xl font-semibold bg-white text-left rounded-lg p-2"
+            />
+          </div>
           <div className="flex items-center justify-center gap-4 rounded-lg">
             <label
               className="text-2xl min-w-28 text-white font-space-grotesk"
@@ -107,7 +152,7 @@ export const FifthPart = () => {
               Email:
             </label>
             <input
-              type="text"
+              type="email"
               id="email"
               name="email"
               className=" w-full text-black font-space-grotesk text-lg 2xl:text-xl font-semibold bg-white text-left rounded-lg p-2"
@@ -143,10 +188,13 @@ export const FifthPart = () => {
           <div className="relative w-max h-max ">
             <div className="absolute inset-0 w-full h-full top-1 left-1 bg-black rounded-lg -z-10" />
             <button
-              type="button"
-              onClick={() => setButtonPressed(!buttonPressed)}
-              className={` cursor-pointer flex items-center justify-center gap-2 text-xl font-space-grotesk text-blakc bg-white rounded-lg px-4 py-2 ${
-                buttonPressed ? "translate-1" : " "
+              disabled={formState === "sending" || formState === "success" || formState === "error"}
+              type={formState === "sending" || formState === "success" || formState === "error" ? "button" : "submit"}
+              className={` 
+                 flex items-center justify-center gap-2 text-xl font-space-grotesk text-blakc  rounded-lg px-4 py-2 ${
+                formState === "sending" ? "translate-1 bg-white/80" : 
+                formState === "success" ? "translate-1 bg-white" : 
+                formState === "error" ? "translate-1 bg-white" : "translate-0 bg-white cursor-pointer"
               } `}
             >
               <svg
@@ -163,7 +211,10 @@ export const FifthPart = () => {
                   className=""
                 />
               </svg>
-              Enviar
+              {formState === "sending" && <span className="text-sm font-space-grotesk font-bold text-black">Enviando...</span>}
+              {formState === "success" && <span className="text-sm font-space-grotesk font-bold text-black">Mensaje enviado :p</span>}
+              {formState === "error" && <span className="text-sm font-space-grotesk font-bold text-black">Ocurrió un error</span>}
+              {formState === "default" && <span className="text-sm font-space-grotesk text-black">Enviar</span>}
             </button>
           </div>
         </form>

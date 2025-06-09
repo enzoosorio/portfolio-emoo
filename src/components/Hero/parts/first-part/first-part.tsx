@@ -8,10 +8,8 @@ export const FirstPart = () => {
 
   const [progressScroll, setProgressScroll] = useState<number>(0);
     
-  gsap.registerPlugin(useGSAP);
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.registerPlugin(MorphSVGPlugin);
-
+  gsap.registerPlugin(useGSAP, ScrollTrigger, MorphSVGPlugin, CustomEase);
+  
  useGSAP(() => {
 
     // Pinnea el contenedor durante 75vh de scroll (25% de 300vh)

@@ -13,6 +13,7 @@ export const DescripcionPart = ({projectIsFixed, projects_realized}: Descripcion
             <div className="w-full h-[104px] bg-gray-200/10 shadow-xl rounded-lg ">
             {projects_realized.map((project) => (
               <p
+                key={project.project_id}
                 className={`absolute top-14 left-1 ${
                   projectIsFixed === project.project_id
                     ? "translate-x-0"

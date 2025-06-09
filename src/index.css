@@ -3,15 +3,7 @@
 @import '@fontsource-variable/space-grotesk';
 @import '@fontsource/sigmar';
 
-@font-face {
-    font-family: 'IBM Plex Mono';
-    src: url('./fonts/IBMPlexMono-Regular.ttf') format('truetype');
-}
 
-@font-face {
-    font-family: 'Space Grotesk';
-    src: url('./fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
-}
 
 @theme{
     --font-ibm-plex-mono: 'IBM Plex Mono', monospace;
@@ -93,7 +85,7 @@
 }
 
 .selector {
-    user-drag: none;
+    user-select: none;
     -webkit-user-drag: none;
     user-select: none;
     -moz-user-select: none;

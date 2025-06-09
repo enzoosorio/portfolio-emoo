@@ -145,19 +145,15 @@
          "first+=2"
       );
 
-      timelineSecondPart.to(
-        ".circle-scale",
-        {
-          duration: 4,
-          scale: 500,
-          ease: "bounce.in",
-        },
-        "first+=4.5"
-      );
-
-
-      
-
+      // timelineSecondPart.to(
+      //   ".circle-scale",
+      //   {
+      //     duration: 4,
+      //     scale: 500,
+      //     ease: "bounce.in",
+      //   },
+      //   "first+=4.5"
+      // );
 
     }, []);
 

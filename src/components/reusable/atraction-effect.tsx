@@ -117,8 +117,8 @@ export const AtractionEffect: React.FC = () => {
         >
           <path
             id="arrow-next-end"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M76.3674 40.5L38.7661 3.06297L40.8828 0.937012L82.126 42L40.8828 83.063L38.7661 80.937L76.3674 43.5H0V40.5H76.3674Z"
           />
         </svg>

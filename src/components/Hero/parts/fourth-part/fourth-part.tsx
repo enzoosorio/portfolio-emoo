@@ -199,8 +199,6 @@ export const FourthPart = () => {
         trigger: ".fourth-section",
         start: "top 20%",
         end: "bottom bottom",
-        // scrub: 1,
-        // markers: true,
       },
     });
 
