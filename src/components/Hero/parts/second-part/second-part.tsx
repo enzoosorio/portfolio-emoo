@@ -86,6 +86,12 @@
       },
     }); 
 
+    gsap.set(".fake-container", {
+      xPercent: -50,
+      yPercent: 0,
+      transformOrigin: "center center",
+    });
+
       const timelineSecondPart = gsap.timeline({
         scrollTrigger: {
           trigger: ".second-section",

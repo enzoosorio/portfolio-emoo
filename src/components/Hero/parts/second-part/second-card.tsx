@@ -44,7 +44,7 @@ export const SecondCard = () => {
 
   return (
     <div className="relative second-pinned-containerr flex flex-col items-center lg:items-start justify-center lg:justify-center gap-6 xl:gap-12 p-6  w-[90%] mx-auto z-40 lg:h-[860px] rounded-lg">
-      <div className="fake-container origin-center absolute top-0 left-1/2 -translate-x-1/2 h-full w-[80%] -z-10 bg-primary-blue  rounded-lg" />
+      <div className="fake-container origin-center absolute top-0 left-1/2 h-full w-[80%] -z-10 bg-primary-blue  rounded-lg" />
       <p 
       aria-label="¡Hola! Actualmente estoy enfocado en el desarrollo web. Me apasiona
         crear experiencias digitales dinámicas que no solo destaquen
