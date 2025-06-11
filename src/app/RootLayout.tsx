@@ -1,15 +1,28 @@
-import { Outlet } from "react-router";
+import { Outlet, useParams } from "react-router";
 import { ButtonMenu } from "../components/menu/Button-menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ButtonLanguage } from "../components/menu/Button-language";
 import { SelectLanguage } from "../components/menu/select-language";
 import { languageOptions } from "../lib/language-options";
 import { menuSelectItems } from "../lib/menu-items";
 import { MenuItems2 } from "../components/menu/menu-items2";
+import i18n from "i18next";
 
 export default function RootLayout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const { lang } = useParams();
+
+  useEffect(() => {
+    console.log({ lang });
+    if (lang && i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    }
+  }, [lang]);
+
+  useEffect(() => {
+  document.documentElement.lang = i18n.language;
+}, [i18n.language]);
 
   const handleOpenLanguageMenu = () => {
     if (isMenuOpen) {

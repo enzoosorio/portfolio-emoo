@@ -1,22 +1,37 @@
-export const menuSelectItems = [
-    {
-      title: "Home",
-      url: "/",
-      cName: "nav-links",
-    },
-    {
-      title: "About me",
-      url: "/about-me",
-      cName: "nav-links",
-    },
-    {
-      title: "Projects",
-      url: "/projects",
-      cName: "nav-links",
-    },
-    {
-      title: "Contact",
-      url: "/contact",
-      cName: "nav-links",
-    },
-  ];
+import type { MenuItem } from "../components/menu/menu-items2";
+
+export const menuSelectItems: MenuItem[] = [
+  {
+    i18nKey: "home",
+    scrollType: "Pages",
+    url: "/",
+    cName: "nav-links",
+  },
+  {
+    i18nKey: "aboutMe",
+    scrollType: "Pages",
+    url: "/about-me",
+    cName: "nav-links",
+  },
+  {
+    i18nKey: "projects",
+    scrollType: "Same Page",
+    url: "#projects",
+    cName: "nav-links",
+    variableHeight: -1000,
+  },
+  {
+    i18nKey: "skills",
+    scrollType: "Same Page",
+    url: "#abilities",
+    cName: "nav-links",
+    variableHeight: 40,
+  },
+  {
+    i18nKey: "contact",
+    scrollType: "Same Page",
+    url: "#contact",
+    cName: "nav-links",
+    variableHeight: -1300,
+  },
+];

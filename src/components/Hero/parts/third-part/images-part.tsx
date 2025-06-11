@@ -1,5 +1,6 @@
 import { type RefObject } from 'react'
 import type { Project } from '../../../../lib/projects-realized';
+import { Translation } from 'react-i18next';
 
 interface ImagesPartProps {
   projectIsFixed: number;
@@ -11,7 +12,9 @@ interface ImagesPartProps {
 
 export const ImagesPart = ({projectIsFixed, projects_realized, divImagesChildren,divImagesInner, divImagesParents}: ImagesPartProps) => {
   return (
-    <div 
+    <Translation ns={["projects_realized"]}>
+      {(t) => (
+        <div 
               className="relative images-part bg-gray-200/10 shadow-xl min-h-[300px] h-auto lg:h-full translate-x-[-1000px] overflow-auto w-full p-1 rounded-lg">
     
                 {projects_realized.map((project, index) => (
@@ -38,7 +41,7 @@ export const ImagesPart = ({projectIsFixed, projects_realized, divImagesChildren
                           <img
                             key={index}
                             src={img}
-                            alt={`${project.project_name} image ${index + 1}`}
+                            alt={`${t(`${project.i18n_key} ${index + 1}` as any)}`}
                             className="w-auto h-full p-1 bg-gray-200 object-cover md:object-contain xl:object-cover "
                           />
                         ))}
@@ -49,5 +52,7 @@ export const ImagesPart = ({projectIsFixed, projects_realized, divImagesChildren
                 ))}
                 
               </div>
+      )}
+    </Translation>
   )
 }

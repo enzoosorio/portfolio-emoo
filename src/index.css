@@ -3,7 +3,9 @@
 @import '@fontsource-variable/space-grotesk';
 @import '@fontsource/sigmar';
 
-
+html {
+  scroll-behavior: smooth;
+}
 
 @theme{
     --font-ibm-plex-mono: 'IBM Plex Mono', monospace;

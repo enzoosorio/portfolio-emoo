@@ -6,6 +6,7 @@ import { letterAnimations } from "../../../../lib/letterAnimations";
 import { SpotifyCircle } from "../../../svg/SpotifyCircle";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP);
 
@@ -15,6 +16,7 @@ interface MainCardProps {
 export const MainCard = ({progressScroll} : MainCardProps) => {
 
   const [letterPhase, setLetterPhase] = useState<number>(0);
+  const { t } = useTranslation();
 
   const baseWord = "portfolio";
   const uniqueLetters = "portfli";
@@ -55,10 +57,10 @@ export const MainCard = ({progressScroll} : MainCardProps) => {
       <div className="cardd absolute top-1/2 -translate-y-1/2 bg-white left-1/2 -translate-x-1/2    rounded-lg p-2 lg:p-4 px-6 xl:px-12 w-[80%] sm:w-[75%] h-[400px] 2xl:w-[1120px] 2xl:h-[500px] mx-auto flex flex-col items-start justify-center gap-2 2xl:gap-6 ">
         <div className="flex flex-col items-start justify-center gap-2">
           <span className=" text-sm 2xl:text-base text-gray-900 font-space-grotesk">
-            Hi, my name is Enzo, and I am a
+            {t("spanSubTitle")}
           </span>
-          <h1 className="text-2xl md:text-3xl 2xl:text-5xl leading-10 text-pretty 2xl:leading-14 font-ibm-plex-mono">
-            FRONTEND DEVELOPER PASSIONATE, TRYING TO SOLVE DAILY PROBLEMS.
+          <h1 className="text-xl md:text-3xl 2xl:text-5xl leading-10 text-pretty 2xl:leading-14 font-ibm-plex-mono">
+            {t("title")}
             :&#41;
           </h1>
         </div>
@@ -83,7 +85,7 @@ export const MainCard = ({progressScroll} : MainCardProps) => {
         </div>
         <div className="relative flex flex-col items-center justify-center w-full gap-8 pb-6">
           <p className="text-sm lg:text-base text-gray-900 font-space-grotesk texttt">
-            This is my
+            {t("spanDescription")}
           </p>
           {/* svg portfolio words effect */}
           <div className="portfolio-letters-container relative flex items-center justify-center ">

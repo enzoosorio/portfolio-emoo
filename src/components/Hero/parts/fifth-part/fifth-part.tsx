@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 import { useRef, useState } from "react";
 import { Footer } from "../../../Footer/footer";
 import emailjs from '@emailjs/browser';
+import { Translation } from "react-i18next";
 
 type FormStates = "default" | "sending" | "success" | "error";
 
@@ -121,21 +122,26 @@ export const FifthPart = () => {
 
   return (
     <section className="custom-cursor fifth-section mt-10 relative main-card-container h-[400vh] overflow-y-hidden flex items-start justify-center">
-      <div className="relative fifth-pinned-container h-screen w-full px-4 py-8 flex flex-col items-center justify-center gap-4 2xl:gap-8">
+      <Translation ns={["heroFifthPart"]}>
+        {
+          (t) => (
+            <div className="relative fifth-pinned-container h-screen w-full px-4 py-8 flex flex-col items-center justify-center gap-4 2xl:gap-8">
         <div className="contacto-cartel relative flex flex-col items-center justify-center p-4 rounded-lg bg-amber-800 shadow-lg">
           <div className="fake-bg absolute top-0 left-0 w-full h-full bg-primary-purple rounded-lg -z-10" />
           <h3 className="header-contacto text-2xl 2xl:text-3xl font-space-grotesk font-semibold uppercase text-white opacity-0">
-            Contacto
+            {t("contact")}
           </h3>
         </div>
-        <form ref={form} onSubmit={sendEmail}
+        <form 
+        id="contact"
+        ref={form} onSubmit={sendEmail}
         className="form-contacto flex flex-col items-center justify-center w-full gap-12 p-2 rounded-sm ">
           <div className="flex items-center justify-center gap-4 rounded-lg">
             <label
               className="text-2xl min-w-28 text-white font-space-grotesk"
               htmlFor="username"
             >
-              Nombre:
+              {t("name")}:
             </label>
             <input
               type="text"
@@ -149,7 +155,7 @@ export const FifthPart = () => {
               className="text-2xl min-w-28 text-white font-space-grotesk"
               htmlFor="email"
             >
-              Email:
+              {t("correo")}:
             </label>
             <input
               type="email"
@@ -163,7 +169,7 @@ export const FifthPart = () => {
               className="text-2xl min-w-28 text-white font-space-grotesk"
               htmlFor="subject"
             >
-              Motivo:
+              {t("motivo")}:
             </label>
             <input
               type="text"
@@ -177,7 +183,7 @@ export const FifthPart = () => {
               className="text-2xl min-w-28 text-white font-space-grotesk"
               htmlFor="message"
             >
-              Mensaje:
+              {t("mensaje")}:
             </label>
             <textarea
               id="message"
@@ -211,15 +217,18 @@ export const FifthPart = () => {
                   className=""
                 />
               </svg>
-              {formState === "sending" && <span className="text-sm font-space-grotesk font-bold text-black">Enviando...</span>}
-              {formState === "success" && <span className="text-sm font-space-grotesk font-bold text-black">Mensaje enviado :p</span>}
-              {formState === "error" && <span className="text-sm font-space-grotesk font-bold text-black">Ocurrió un error</span>}
-              {formState === "default" && <span className="text-sm font-space-grotesk text-black">Enviar</span>}
+              {formState === "sending" && <span className="text-sm font-space-grotesk font-bold text-black">{t("enviar_loading")}</span>}
+              {formState === "success" && <span className="text-sm font-space-grotesk font-bold text-black">{t("enviado")}</span>}
+              {formState === "error" && <span className="text-sm font-space-grotesk font-bold text-black">{t("enviado_error")}</span>}
+              {formState === "default" && <span className="text-sm font-space-grotesk text-black">{t("enviar")}</span>}
             </button>
           </div>
         </form>
         <Footer/>
       </div>
+          )
+        }
+      </Translation>
     </section>
   );
 };

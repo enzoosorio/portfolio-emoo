@@ -1,9 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import  { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import MorphSVGPlugin from "gsap/MorphSVGPlugin";
 import { Link } from "react-router";
 
-export const AtractionEffect: React.FC = () => {
+interface AtractionEffectProps{
+  labelLanguage : string
+}
+
+export const AtractionEffect= ({ labelLanguage } : AtractionEffectProps) => {
   gsap.registerPlugin(MorphSVGPlugin);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -106,7 +110,7 @@ export const AtractionEffect: React.FC = () => {
         ref={childRef}
         className="cursor-pointer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] text-base md:text-2xl text-white font-ibm-plex-mono rounded-full bg-white/25 flex items-center justify-center"
       >
-        ACERCA DE MÍ
+        {labelLanguage}
         <div className="double-circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-transparent w-1 h-1 cursor-pointer rounded-full" />
         {/* arrow end */}
         <svg

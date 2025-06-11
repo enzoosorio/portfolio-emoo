@@ -1,21 +1,19 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { TechChart2 } from "./TechChart2";
+import { Translation } from "react-i18next";
+import i18next from "i18next";
+import { useParams } from "react-router";
+import { technologies } from "../../../../lib/technologies";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-type SkillType = "Frontend" | "Backend" | "Fullstack" | "Design Tool" | "Experiencia" | "Soft Skills";
-
-export type Skill = {
-  label: string;
-  value: number;
-  skillType?: SkillType;
-};
 
 const forButton = [
   {
-    name: "Desarrollador",
+    name: "Tecnologias",
+    value : "tecnologias",
     icon: (
       <svg
         className="svg-pointer fill-black transition-colors w-6 h-6 md:w-8 md:h-8"
@@ -33,7 +31,8 @@ const forButton = [
     ),
   },
   {
-    name: "Diseñador",
+    name: "Habilidades",
+    value : "habilidades",
     icon: (
       <svg
         className="svg-pointer w-6 h-6 md:w-8 md:h-8"
@@ -52,6 +51,7 @@ const forButton = [
   },
   {
     name: "Habilidades blandas",
+    value : "habilidadesBlandas",
     icon: (
       <svg
         className="svg-pointer w-8 h-8 md:w-9 md:h-9"
@@ -70,120 +70,11 @@ const forButton = [
   },
 ];
 
-const technologies : Record<string, Skill[]> = {
-  "Desarrollador" : [
-    {
-      label: "React",
-      value: 7,
-      skillType: "Frontend"
-    },
-    {
-      label: "CSS",
-      value: 1.4,
-      skillType: "Frontend"
-    },
-    {
-      label: "JS",
-      value: 5,
-      skillType: "Frontend"
-    },
-    {
-      label: "TS",
-      value: 10,
-      skillType: "Frontend"
-
-    },
-    {
-      label: "HTML",
-      value: 9,
-      skillType: "Frontend"
-    },
-    {
-      label: "SEO",
-      value: 8,
-      skillType: "Fullstack"
-    },
-    {
-      label: "SQL",
-      value: 7,
-      skillType: "Backend"
-    },
-    {
-      label: "Supabase",
-      value: 6,
-      skillType: "Backend"
-    },
-    {
-      label: "Github",
-      value: 5,
-      skillType: "Fullstack"
-    }
-  ],
-  "Diseñador" : [
-    {
-      label: "Figma",
-      value: 9,
-      skillType: "Design Tool"
-    },
-    {
-      label: "Sketch",
-      value: 7,
-      skillType: "Design Tool"
-    },
-    {
-      label: "Svg maker",
-      value: 6,
-      skillType: "Design Tool"
-    },
-    {
-      label: "Adobe",
-      value: 4,
-      skillType: "Design Tool"
-    },
-    {
-      label : "Usabilidad",
-      value : 8,
-      skillType: "Experiencia"
-    },
-    {
-      label : "Accessibilidad",
-      value : 7,
-      skillType: "Experiencia"
-    }
-  ],
-  "Habilidades blandas" : [
-    {
-      label: "Teamwork",
-      value: 7,
-      skillType: "Soft Skills"
-    },
-    {
-      label: "Comunicación",
-      value: 8,
-      skillType: "Soft Skills"
-    },
-    {
-      label: "Liderazgo",
-      value: 9,
-      skillType: "Soft Skills"
-    },
-
-    {
-      label: "Organización",
-      value: 10,
-        skillType: "Soft Skills"
-    },
-    {
-      label: "Empatía",
-      value: 8,
-      skillType: "Soft Skills"
-    }
-  ]
-}
-
 export const FourthPart = () => {
-  const [activeButton, setActiveButton] = useState<number>(0);
-  const activeDivRef = useRef<HTMLDivElement | null>(null); 
+  const [activeButton, setActiveButton] = useState<string>("tecnologias");
+  const lastButtonHoveredRef = useRef<HTMLButtonElement | null>(null);
+  const activeDivRef = useRef<HTMLDivElement | null>(null);
+  const { lang } = useParams();
 
   useGSAP(() => {
     ScrollTrigger.create({
@@ -211,12 +102,40 @@ export const FourthPart = () => {
     });
   }, []);
 
+  const handleResizeVp = () => {
+    const lastButton = lastButtonHoveredRef.current;
+    if (!lastButton) return;
+    const element = lastButton as HTMLButtonElement;
+    const elementLeft = element.offsetLeft;
+    const elementWidth = element.offsetWidth;
+    activeDivRef.current!.style.width = `${elementWidth}px`;
+    activeDivRef.current!.style.left = `${elementLeft}px`;
+    activeDivRef.current!.style.borderRadius = "8px";
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResizeVp);
+    return () => {
+      window.removeEventListener("resize", handleResizeVp);
+    };
+  }, []);
+
+  useEffect(() => {
+    handleResizeVp();
+  }, [i18next.language, lang]);
+
   return (
-    <section className="custom-cursor fourth-section mt-10 relative main-card-container h-[300vh] overflow-y-hidden flex items-start justify-center">
-      <div className="relative fourth-pinned-container h-screen w-[90%]  px-4 py-8 flex flex-col items-center lg:items-end justify-start mt-8 sm:mt-20 md:mt-0 lg:justify-start gap-6 2xl:gap-8">
-        <h3 className="text-2xl 2xl:text-3xl w-full text-center font-ibm-plex-mono text-black uppercase header-fourth-part">
-          Habilidades
-        </h3>
+    <section 
+    id="abilities"
+    className="custom-cursor fourth-section mt-10 relative main-card-container h-[300vh] overflow-y-hidden flex items-start justify-center">
+      <div className="relative fourth-pinned-container h-screen w-[90%]  px-4 py-8 flex flex-col items-center lg:items-end justify-start mt-8 sm:mt-20 md:mt-0 lg:justify-start gap-6 2xl:gap-4">
+        <Translation ns={["heroFourthPart"]}>
+          {(t) => (
+            <h3 className="text-2xl 2xl:text-3xl w-full text-center font-ibm-plex-mono text-black uppercase header-fourth-part">
+              {t("title")}
+            </h3>
+          )}
+        </Translation>
         {/* <div className="absolute top-0 left-10 w-[200px] font-space-grotesk flex flex-col items-center justify-center gap-6 p-4 rounded-lg shadow-lg bg-white">
           <div className="flex items-center justify-between w-full">
             <p>Frontend</p>
@@ -236,46 +155,51 @@ export const FourthPart = () => {
           <div className="absolute inset-0 top-1 left-1 w-full h-full bg-black -z-30 rounded-lg" />
           <div
             ref={activeDivRef}
-            className="absolute top-0 left-0 w-0 h-full bg-amber-200 transition-all -z-10"
+            className="hidden md:block absolute top-0 left-0 w-0 h-full bg-amber-200 transition-all -z-10"
           />
-          <div
-            onMouseDown={(e) => {
-              const element = e.currentTarget as HTMLDivElement;
-              element.style.translate = "2px 2px";
-            }}
-            onMouseUp={(e) => {
-              const element = e.currentTarget as HTMLDivElement;
-              element.style.translate = "0px 0px";
-            }}
-            className="relative flex items-center justify-center gap-0 rounded-lg border z-10 bg-transparent transition-all"
-          >
-            {forButton.map((button, index) => (
-              <button
-                onMouseEnter={(e) => {
-                  const element = e.currentTarget as HTMLButtonElement;
-                  const elementLeft = element.offsetLeft;
-                  const elementWidth = element.offsetWidth;
-                  activeDivRef.current!.style.width = `${elementWidth}px`;
-                  activeDivRef.current!.style.left = `${elementLeft}px`;
-                  activeDivRef.current!.style.borderRadius = "8px";
+          <Translation ns={["heroFourthPart"]}>
+            {(t) => (
+              <div
+                onMouseDown={(e) => {
+                  const element = e.currentTarget as HTMLDivElement;
+                  element.style.translate = "2px 2px";
                 }}
-                onClick={() => {
-                  setActiveButton(index);
+                onMouseUp={(e) => {
+                  const element = e.currentTarget as HTMLDivElement;
+                  element.style.translate = "0px 0px";
                 }}
-                key={button.name}
-                className={`cursor-pointer flex items-center justify-center text-xs lg:text-base h-full gap-2 px-4 py-2 ${
-                  activeButton === index
-                    ? "bg-amber-400 rounded-lg"
-                    : "bg-transparent"
-                }`}
+                className="relative flex items-center justify-center gap-0 rounded-lg border z-10 bg-transparent transition-all"
               >
-                {button.icon}
-                {button.name}
-              </button>
-            ))}
-          </div>
+                {forButton.map((button) => (
+                  <button
+                    onMouseEnter={(e) => {
+                      const element = e.currentTarget as HTMLButtonElement;
+                      const elementLeft = element.offsetLeft;
+                      const elementWidth = element.offsetWidth;
+                      activeDivRef.current!.style.width = `${elementWidth}px`;
+                      activeDivRef.current!.style.left = `${elementLeft}px`;
+                      activeDivRef.current!.style.borderRadius = "8px";
+                      lastButtonHoveredRef.current = e.currentTarget;
+                    }}
+                    onClick={() => {
+                      setActiveButton(button.value);
+                    }}
+                    key={button.name}
+                    className={`cursor-pointer flex items-center justify-center text-xs lg:text-base h-full gap-2 px-4 py-2 ${
+                      activeButton === button.value
+                        ? "bg-amber-400 rounded-lg"
+                        : "bg-transparent"
+                    }`}
+                  >
+                    {button.icon}
+                    {t(`${button.name}` as any)}
+                  </button>
+                ))}
+              </div>
+            )}
+          </Translation>
         </div>
-        <TechChart2 technologies={technologies} activeButton={activeButton}/>
+        <TechChart2 technologies={technologies} activeButton={activeButton} />
       </div>
     </section>
   );

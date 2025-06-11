@@ -1,11 +1,15 @@
+import { Translation } from "react-i18next";
+
 export const Footer = () => {
   return (
-        <div className="clippy-footer fixed bottom-0 left-0 right-0 footer w-full flex items-center px-6 lg:px-0 bg-white z-20 justify-center gap-1 lg:gap-40 2xl:gap-[500px] py-16 ">
+        <Translation ns={["footer"]}>
+          {
+            (t) => (
+              <div className="clippy-footer fixed bottom-0 left-0 right-0 footer w-full flex items-center px-6 lg:px-0 bg-white z-20 justify-center gap-1 lg:gap-40 2xl:gap-[500px] py-16 ">
           <div className="flex flex-col items-start justify-center gap-4 w-[400px] mt-10 ">
             <p className="font-sigmar text-xl lg:text-4xl">EMOO</p>
             <p className="font-space-grotesk text-base lg:text-lg w-[20ch]">
-              Este fue mi portafolio, estará en constante actualización según
-              vaya creciendo profesionalmente
+              {t("paragraph")}
             </p>
             <p className="font-space-grotesk text-base xl:text-lg">2025.</p>
           </div>
@@ -17,7 +21,9 @@ export const Footer = () => {
                   alt="arrow"
                   className="w-8 h-8 lg:w-16 lg:h-16  rotate-y-180 lg:rotate-10 lg:rotate-y-0"
                 />
-                <p className="w-max text-sm lg:text-base font-semibold ">Lado personal</p>
+                <p className="w-max text-sm lg:text-base font-semibold ">
+                  {t("lado_personal")}
+                </p>
               </div>
               {/* facebook */}
               <a href="https://www.facebook.com/enzo.osorioortiz/" target="_blank" rel="noopener noreferrer">
@@ -111,8 +117,8 @@ export const Footer = () => {
             <div className="relative flex items-center justify-center gap-8">
               <div className="absolute top-28 lg:top-4 -left-12 lg:-left-52 flex items-center justify-center gap-4 font-space-grotesk text-lg w-[120px] lg:w-[220px] ">
                 <p className="lg:w-full text-sm lg:text-base font-semibold text-left w-[8ch] ">
-                  Lado profesional
-                  <span className="lg:hidden">  y música</span>
+                  {t("lado_profesional")}
+                  <span className="lg:hidden">  {t("y_musica")}</span>
                 </p>
                 <img
                   src="/images/arrow-3.png"
@@ -168,7 +174,7 @@ export const Footer = () => {
                   className="w-[50%]  -rotate-12"
                 />
                 <p className="w-full font-semibold text-left">
-                  Playlist de música
+                  {t("lado_musica")}
                 </p>
               </div>
               {/* spotify */}
@@ -189,5 +195,8 @@ export const Footer = () => {
             </div>
           </div>
         </div>
+            )
+          }
+        </Translation>
   );
 };

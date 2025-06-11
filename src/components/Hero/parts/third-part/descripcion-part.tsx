@@ -1,3 +1,4 @@
+import { Translation } from 'react-i18next';
 import type { Project } from '../../../../lib/projects-realized';
 
 interface DescripcionPartProps {
@@ -7,10 +8,19 @@ interface DescripcionPartProps {
 export const DescripcionPart = ({projectIsFixed, projects_realized}: DescripcionPartProps) => {
   return (
     <div className="description-part opacity-0 px-2 relative flex translate-x-[-1000px] flex-col items-center justify-center w-full gap-2 lg:gap-4 rounded-lg">
-            <p className="text-primary-purple font-bold text-left w-full font-space-grotesk text-lg 2xl:text-xl">
-              Descripción
+            <Translation ns={["heroThirdPart"]}>
+              {
+                (t) => (
+                  <p className="text-primary-purple font-bold text-left w-full font-space-grotesk text-lg 2xl:text-xl">
+              {t("Description")}
             </p>
-            <div className="w-full h-[104px] bg-gray-200/10 shadow-xl rounded-lg ">
+                )
+              }
+            </Translation>
+            <Translation ns={["projects_realized"]}>
+              {
+                (t) => (
+                  <div className="w-full h-[104px] bg-gray-200/10 shadow-xl rounded-lg ">
             {projects_realized.map((project) => (
               <p
                 key={project.project_id}
@@ -20,10 +30,13 @@ export const DescripcionPart = ({projectIsFixed, projects_realized}: Descripcion
                     : "translate-x-[-2000px]"
                 } font-space-grotesk  text-xs leading-5 md:leading-normal md:text-sm lg:text-base 2xl:text-lg font-semibold text-pretty text-left w-[90%] transition-all px-4`}
               >
-                {project.project_description}
+                {t(`projects.${project.i18n_key}.description` as any)}
               </p>
             ))}
             </div>
+                )
+              }
+            </Translation>
           </div>
   )
 }

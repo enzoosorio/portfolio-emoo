@@ -3,12 +3,14 @@ import React from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import  { useEffect, useRef, useState } from "react";
-import type { Skill } from "./fourth-part";
+import { Translation } from "react-i18next";
+import type { ChartInterface, Skill } from "../../../../lib/technologies";
+
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 interface TechChartProps {
-  technologies: Record<string, Skill[]>;
-  activeButton: number;
+  technologies: ChartInterface;
+  activeButton: string;
 }
 export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
   const chartRef = useRef<HTMLDivElement | null>(null);
@@ -22,13 +24,13 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
   const [initialScrollLeft, setInitialScrollLeft] = useState(0); 
 
 
-  const categoryKeys = Object.keys(technologies);
-  if(categoryKeys.length === 0) return null;
-  const selectedCategory = categoryKeys[activeButton] ?? categoryKeys[0]
-  if(!selectedCategory) return null;
-  const currentSkills = technologies[selectedCategory];
+  const currentSkills: Skill[] =
+  activeButton === "tecnologias"
+    ? Object.values(technologies.tecnologias).flat()
+    : activeButton === "habilidades"
+    ? Object.values(technologies.habilidades).flat()
+    : technologies["Habilidades blandas"];
 
-  barsRef.current = [];
 
    useGSAP(() => {
     if (!chartRef.current) return;
@@ -37,7 +39,7 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
     triggerRef.current = ScrollTrigger.create({
       trigger: chartRef.current,
       start: "top bottom",
-      end: "bottom top",
+      end: "bottom+=200 top",
       toggleActions: "play none none reverse",
       invalidateOnRefresh: true,
     });
@@ -62,25 +64,9 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
     const progreso = trig.progress;
     tl.clear();
     
-
-    const categoryKeys = Object.keys(technologies);
-    if (categoryKeys.length === 0) {
-      return null;
-    }
-    const selectedCategory : string =
-      categoryKeys[activeButton] || categoryKeys[0] || "";
-
-    const currentSkills = technologies[selectedCategory];
-
-    tl.to(".vertical-bar", {
-      height: () => chartRef.current!.clientHeight * 0.9,
-      ease: "power1.out",
-      stagger: 0.3,
-    });
     tl.to(".horizontal-bar", {
       width: () => chartRef.current!.clientWidth * 0.93,
       ease: "power1.out",
-      stagger: 0.3,
     });
 
     currentSkills?.forEach((technology: Skill, index: number) => {
@@ -92,10 +78,9 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
         {
           height: technology.value * 40,
           ease: "back",
-          duration: 0.5,
-          stagger: 0.2,
+          duration: 0.35,
         },
-        "-=0.25"
+        "-=0.05"
       );
     });
 
@@ -159,27 +144,33 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
     };
   }, [isDragging, startX, initialScrollLeft]);
 
+
   return (
     <>
+      {/* <div 
+      className="absolute bottom-[23.5%] z-20 left-1/2 -translate-x-1/2 w-11/12 h-[10px] bg-gray-100 opacity-0 rounded-br-lg rounded-bl-lg"/> */}
       <div
         ref={chartRef}
-        className="chart-container mt-4 relative w-full bg-gray-100  h-[480px] overflow-hidden  rounded-lg px-12"
+        className="relative chart-container mt-4 w-full bg-gray-100 min-h-[500px] overflow-hidden  rounded-lg px-12"
       >
         <div
           ref={barsContainerRef}
-          className="ml-16  cursor-grab w-full flex items-center justify-start overflow-x-auto gap-6 h-full"
+          className="ml-16 cursor-grab w-full flex items-center justify-start overflow-x-auto gap-14 h-full"
         >
-          {currentSkills?.map((technology: Skill, index: number) => (
-            <React.Fragment key={technology.label}>
+          <Translation ns={["chart"]}>
+            {(t) => (
+             <>
+              {currentSkills?.map((technology: Skill, index: number) => (
+            <React.Fragment key={technology.i18nRef}>
               <div
-                className="flex flex-col items-center justify-end h-full gap-4 pb-2 min-w-[72px] lg:min-w-28 "
-                key={technology.label}
+                className="relative pb-[72px] lg:pb-14 flex flex-col items-center justify-end h-full gap-4 min-w-[100px] lg:min-w-36 w-max "
+                key={technology.i18nRef}
               >
                 <div
                   ref={(el) => {
                     barsRef.current[index] = el;
                   }}
-                  className="bar w-14 lg:w-24 h-16"
+                  className="bar w-16 lg:w-24 h-16"
                   style={{
                     backgroundColor:
                       technology.skillType === "Frontend"
@@ -188,8 +179,8 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
                         ? "#36A2EB"
                         : technology.skillType === "Fullstack" 
                         ? "#4BC0C0" :
-                        technology.skillType === "Design Tool"
-                        ? "#FFE640" :
+                        // technology.skillType === "Design Tool"
+                        // ? "#FFE640" :
                         technology.skillType === "Experiencia"
                         ? "#FF40EC" :
                         technology.skillType === "Soft Skills"
@@ -197,8 +188,8 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
                         "#4BC0C0",
                   }}
                 />
-                <p className="selector label-bar text-center font-space-grotesk text-xl">
-                  {technology.label}
+                <p className="selector absolute left-1/2  min-h-20 lg:min-h-[60px] -translate-x-1/2 bottom-0 label-bar w-full text-center font-space-grotesk text-base flex items-center justify-center">
+                  {t(`${technology.i18nRef}` as any)}
                 </p>
               </div>
               {index === currentSkills.length - 1 && (
@@ -208,17 +199,24 @@ export const TechChart2 = ({technologies, activeButton }: TechChartProps) => {
           )
           
           )}
+             </>
+            )}
+          </Translation>
         </div>
-        <div className="vertical-bar absolute top-0 left-24 w-[3px] h-0 bg-black rounded-2xl" />
-        <div className="horizontal-bar absolute bottom-12 left-24 right-0 w-0 h-1 bg-black rounded-2xl" />
-        <div className="absolute left-2 top-2  gap-36  font-space-grotesk text-xl z-50 flex flex-col items-start justify-center h-max w-max ">
-          <p className="text-left text-sm">Avanzado</p>
-          <p className="text-left text-sm">Intermedio</p>
-          <p className="text-left text-sm">Principiante</p>
-        </div>
+        <Translation ns={["heroFourthPart"]}>
+          {(t) => (
+            <>
+              <div className="vertical-bar absolute top-0 left-24 w-[3px] h-[85.5%] bg-black rounded-2xl" />
+              <div className="horizontal-bar absolute bottom-[72px]  left-24 right-0 w-0 h-1 bg-black rounded-2xl" />
+              <div className="absolute left-2 top-2  gap-36  font-space-grotesk text-xl z-50 flex flex-col items-start justify-center h-max w-max ">
+                <p className="text-left text-sm">{t("avanzado")}</p>
+                <p className="text-left text-sm">{t("intermedio")}</p>
+                <p className="text-left text-sm">{t("principiante")}</p>
+              </div>
+            </>
+          )}
+          </Translation>
       </div>
-      {/* <div className='vertical-bar absolute top-[54%] -translate-y-1/2 left-24 w-[3px] h-0 bg-black rounded-2xl'/> */}
-      {/* <div className='horizontal-bar absolute top-[calc(55%+200px)] -translate-y-1/2 left-24 right-0 w-0 h-1 bg-black rounded-2xl'/> */}
     </>
   );
 };

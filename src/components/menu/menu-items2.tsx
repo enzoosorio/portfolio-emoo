@@ -2,11 +2,14 @@ import { Link, useLocation } from "react-router";
 import gsap from "gsap";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
+import { Translation } from "react-i18next";
 
-interface MenuItem {
-  title: string;
+export interface MenuItem {
+  i18nKey: string;
   cName: string;
   url: string;
+  variableHeight?: number;
+  scrollType: "Pages" | "Same Page";
 }
 
 interface MenuItemsProps {
@@ -39,7 +42,7 @@ useGSAP((context) => {
     const tlOpen = gsap.timeline();
     tlOpen.to(".nav-links", {
       duration: 0.8,
-      height: "354px",
+      height: "434px",
       opacity: 1,
       ease: "back.out(1.2)",
     });
@@ -79,16 +82,29 @@ useGSAP((context) => {
   revertOnUpdate: true,
 });
 
+const handleSamePageScroll = (id: string, variableHeight: number) => {
+    const el = document.getElementById(id.replace("#", ""));
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - variableHeight; // Ajusta según tu diseño
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
 
   return (
-    <ul
+    <Translation ns={["menu-items"]}>
+      {(t) => (
+        <ul
       className={`
-    absolute nav-links
-    bg-primary-blue rounded-sm p-4 pl-10 pb-10 top-0 right-[5%]
+    fixed inset-0  
+    md:absolute nav-links
+    bg-primary-blue rounded-sm p-4 pl-10 pb-10 md:top-0 md:bottom-auto md:left-auto md:right-[5%]
+    w-full h-full
     md:w-72
-    opacity-1
-    z-0
-    flex flex-col items-start justify-end gap-6 `}
+    lg:h-0
+    opacity-0
+    -z-10
+    flex flex-col items-start justify-end gap-6`}
     >
       {items.map((item, index) => {
         return (
@@ -97,13 +113,28 @@ useGSAP((context) => {
           className="relative w-full h-max overflow-hidden">
             <li
             ref={addToLetterItemsRef}
-            className={`font-sigmar text-2xl ${location.pathname === item.url ? "text-white" : "text-primary-purple"}`}
+            className={`font-sigmar text-2xl hover:text-white transition-colors cursor-pointer ${location.pathname === item.url ? "text-white" : "text-primary-purple"}`}
           >
-            <Link to={item.url}>{item.title}</Link>
+            {item.scrollType === "Pages" ? <Link to={item.url}>
+              {t(`${item.i18nKey}` as any)}
+            </Link> :
+              item.variableHeight && item.scrollType === "Same Page" ? (
+              <button
+                onClick={() => handleSamePageScroll(item.url, item.variableHeight ?? 0)}
+                className="text-left cursor-pointer"
+              >
+                {t(`${item.i18nKey}` as any)}
+              </button>
+              ) : (
+                <Link to={item.url}>{t(`${item.i18nKey}` as any)}</Link>
+              )
+            }
           </li>
           </div>
         );
       })}
     </ul>
+      )}
+    </Translation>
   );
 };

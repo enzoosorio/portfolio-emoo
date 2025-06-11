@@ -1,0 +1,78 @@
+{
+  "tecnologias": {
+    "Frontend": {
+      "Javascript": "Javascript",
+      "Typescript": "Typescript",
+      "React": "React",
+      "HTML": "HTML",
+      "CSS": "CSS",
+      "Tailwind": "Tailwind",
+      "Zustand": "Zustand",
+      "Figma": "Figma",
+      "Sketch": "Sketch",
+      "Adobe": "Adobe"
+    },
+    "Backend": {
+      "Nodejs": "Nodejs",
+      "Express": "Express",
+      "Mongodb": "Mongodb",
+      "Postgresql": "Postgresql",
+      "Prisma": "Prisma",
+      "Authjs": "Authjs"
+    },
+    "Fullstack": {
+      "AWS": "AWS",
+      "Nextjs": "Nextjs",
+      "Supabase": "Supabase",
+      "Github": "Github"
+    }
+  },
+  "habilidades": {
+    "Frontend": {
+    "ux_ui": "UX/UI",
+    "accessibility": "Accesibilidad web",
+    "seo": "SEO",
+    "responsive_design": "Diseño responsivo",
+    "interactive_ui": "Interfaces interactivas",
+    "svg_graphics": "SVG's",
+    "web_performance": "Optimización rendimiento",
+    "pwa": "PWA",
+    "design_systems": "Sistemas de diseño",
+    "cross_browser": "Compatibilidad",
+    "best_practices": "Buenas prácticas"
+  },
+  "Backend": {
+    "database_design": "DBMS",
+    "api_design": "APIs REST",
+    "microservices": "Arquitectura de microservicios",
+    "serverless": "Funciones serverless",
+    "cloud_integration": "Servicios  de la Nube",
+    "security": "Seguridad y control de acceso",
+    "scalability": "Escalabilidad",
+    "automation": "Automatización de procesos"
+  },
+  "Testing": {
+  "unit_testing": "Pruebas unitarias",
+  "integration_testing": "Pruebas de integración",
+  "ui_testing": "Pruebas de UI",
+  "acceptance_testing": "PAU",
+  "stress_testing": "Pruebas de estrés",
+  "security_testing": "Pruebas de seguridad",
+  "accessibility_testing": "Pruebas de accesibilidad (a11y)",
+  "usability_testing": "Pruebas de usabilidad",
+  "automated_testing": "Pruebas automatizadas"
+}
+  },
+  "habilidadesBlandas": {
+    "creatividad": "Creatividad",
+    "empatia": "Empatía",
+    "teamwork": "Teamwork",
+    "liderazgo": "Liderazgo",
+    "communicacion": "Comunicación",
+    "escuchaActiva": "Escucha activa",
+    "autonomia": "Autonomía",
+    "pensamientoCritico": "Pensamiento crítico",
+    "responsabilidad": "Responsabilidad",
+    "aptoaAprender": "Apto a aprender"
+  }
+}

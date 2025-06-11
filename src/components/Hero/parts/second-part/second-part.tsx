@@ -127,7 +127,16 @@
       );
 
       timelineSecondPart.to(
-        ".sp-text",
+        ".sp-text1",
+        {
+          opacity: 1,
+          duration: 1,
+          ease: "power1.out",
+        },
+        "first+=2"
+      );
+      timelineSecondPart.to(
+        ".sp-text2",
         {
           opacity: 1,
           duration: 1,

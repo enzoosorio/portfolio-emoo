@@ -1,0 +1,11 @@
+{
+    "contact" : "Contacto",
+    "name" : "Nombre",
+    "correo" : "Correo",
+    "motivo" : "Motivo",
+    "mensaje" : "Mensaje",
+    "enviar" : "Enviar",
+    "enviar_loading" : "Enviando...",
+    "enviado" : "Mensaje enviado :p",
+    "enviado_error" : "Error al enviar el mensaje"
+}

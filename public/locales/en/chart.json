@@ -1,0 +1,78 @@
+{
+  "tecnologias": {
+    "Frontend": {
+      "Javascript": "Javascript",
+      "Typescript": "Typescript",
+      "React": "React",
+      "HTML": "HTML",
+      "CSS": "CSS",
+      "Tailwind": "Tailwind",
+      "Zustand": "Zustand",
+      "Figma": "Figma",
+      "Sketch": "Sketch",
+      "Adobe": "Adobe"
+    },
+    "Backend": {
+      "Nodejs": "Nodejs",
+      "Express": "Express",
+      "Mongodb": "Mongodb",
+      "Postgresql": "PostgreSQL",
+      "Prisma": "Prisma",
+      "Authjs": "Auth.js"
+    },
+    "Fullstack": {
+      "AWS": "AWS",
+      "Nextjs": "Next.js",
+      "Supabase": "Supabase",
+      "Github": "GitHub"
+    }
+  },
+  "habilidades": {
+    "Frontend": {
+      "ux_ui": "UX/UI",
+      "accessibility": "Web Accessibility",
+      "seo": "SEO",
+      "responsive_design": "Responsive Design",
+      "interactive_ui": "Interactive Interfaces",
+      "svg_graphics": "SVGs",
+      "web_performance": "Performance Optimization",
+      "pwa": "PWA",
+      "design_systems": "Design Systems",
+      "cross_browser": "Cross-Browser Compatibility",
+      "best_practices": "Best Practices"
+    },
+    "Backend": {
+      "database_design": "DBMS",
+      "api_design": "REST APIs",
+      "microservices": "Microservices Architecture",
+      "serverless": "Serverless Functions",
+      "cloud_integration": "Cloud Services",
+      "security": "Security & Access Control",
+      "scalability": "Scalability",
+      "automation": "Process Automation"
+    },
+    "Testing": {
+      "unit_testing": "Unit Testing",
+      "integration_testing": "Integration Testing",
+      "ui_testing": "UI Testing",
+      "acceptance_testing": "UAT",
+      "stress_testing": "Stress Testing",
+      "security_testing": "Security Testing",
+      "accessibility_testing": "Accessibility Testing (a11y)",
+      "usability_testing": "Usability Testing",
+      "automated_testing": "Automated Testing"
+    }
+  },
+  "habilidadesBlandas": {
+    "creatividad": "Creativity",
+    "empatia": "Empathy",
+    "teamwork": "Teamwork",
+    "liderazgo": "Leadership",
+    "communicacion": "Communication",
+    "escuchaActiva": "Active Listening",
+    "autonomia": "Autonomy",
+    "pensamientoCritico": "Critical Thinking",
+    "responsabilidad": "Responsibility",
+    "aptoaAprender": "Willingness to Learn"
+  }
+}

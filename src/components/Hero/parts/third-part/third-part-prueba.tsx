@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import { DescripcionPart } from "./descripcion-part";
 import { ImagesPart } from "./images-part";
+import { Translation } from "react-i18next";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export const ThirdPart = () => {
@@ -100,14 +101,28 @@ export const ThirdPart = () => {
   }, []);
 
   return (
-    <section className="custom-cursor third-section mt-10 relative  main-card-container h-[300vh] overflow-hidden flex items-start justify-center">
+    <section 
+    id="projects"
+    className="custom-cursor third-section mt-10 relative  main-card-container h-[300vh] overflow-hidden flex items-start justify-center">
       <div className="relative third-pinned-container h-screen w-full px-8 py-8 flex flex-col lg:flex-row-reverse items-center justify-end gap-4 2xl:gap-8">
-        <div className="relative w-full lg:w-[700px] 2xl:w-[940px] h-auto py-2 lg:py-0 lg:h-full mt-12 px-4  flex flex-col items-start justify-center gap-4 2xl:gap-8">
-          <p className="title-third-part text-xs sm:text-base lg:text-lg 2xl:text-2xl font-ibm-plex-mono ">
-            He realizado los siguientes proyectos:
+        <div
+        className="relative w-full lg:w-[700px] 2xl:w-[940px] h-auto py-2 lg:py-0 lg:h-full mt-12 px-4  flex flex-col items-start justify-center gap-4 2xl:gap-8">
+          <Translation ns={["heroThirdPart"]}>
+            {
+              (t) => (
+                <p className="title-third-part text-xs sm:text-base lg:text-lg 2xl:text-2xl font-ibm-plex-mono ">
+            {t("Title")}
           </p>
-          <ul className="w-full grid grid-cols-3 lg:flex gap-2  lg:flex-nowrap lg:flex-col items-start justify-start shadow-xl p-3">
+              )
+            }
+
+          </Translation>
+          <Translation ns={["projects_realized"]}>
+            {
+              (t) => (
+                <ul className="w-full grid grid-cols-3 lg:flex gap-2  lg:flex-nowrap lg:flex-col items-start justify-start shadow-xl p-3">
             {projects_realized.map((project) => (
+                (
               <li
                 key={project.project_id}
                 className="text-project opacity-0 my-2 translate-x-[1000px]"
@@ -120,16 +135,19 @@ export const ThirdPart = () => {
                       : "text-primary-blue"
                   } transition-all duration-300 `}
                 >
-                  {project.project_name}
+                 {t(`projects.${project.i18n_key}.name` as any)}
                 </h3>
               </li>
-            ))}
+            )
+              )
+            )}
           </ul>
+              )
+            }
+          </Translation>
         </div>
-        {/* <p className="block md:hidden text-primary-purple font-space-grotesk">
-          Scroll vertical
-        </p> */}
-        <div className="flex flex-col items-center w-full xl:w-[80%] h-full xl:h-[90%] justify-center gap-6">
+        <div 
+        className="flex flex-col items-center w-full xl:w-[80%] h-full xl:h-[90%] justify-center gap-6">
           <ImagesPart
             divImagesChildren={divImagesChildren}
             divImagesInner={divImagesInner}

@@ -1,0 +1,11 @@
+{
+    "contact" : "Contact",
+    "name" : "Name",
+    "correo" : "Email",
+    "motivo" : "Subject",
+    "mensaje" : "Message",
+    "enviar" : "Send",
+    "enviar_loading" : "Sending...",
+    "enviado" : "Message sent :p",
+    "enviado_error" : "Error sending the message"
+}

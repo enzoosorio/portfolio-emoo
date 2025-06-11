@@ -1,0 +1,24 @@
+{
+  "projects": {
+    "yinDye": {
+      "name": "Yin Dye",
+      "description": "This is a project of natural and sustainable colors, where you explore the connection between nature and fashion."
+    },
+    "levelUp": {
+      "name": "Level Up",
+      "description": "This is a personal and professional development project, offering resources and tools to improve skills and achieve goals."
+    },
+    "giovanniSalvatore": {
+      "name": "Giovanni Salvatore",
+      "description": "This is a web design and development project that showcases the portfolio of a web designer and developer."
+    },
+    "miPrimerWAT": {
+      "name": "Mi primer WAT",
+      "description": "This is a project that documents the experience of a work and adventure travel, sharing tips and recommendations."
+    },
+    "revimax": {
+      "name": "Revimax",
+      "description": "This is a traffic management system for technical vehicles, allowing users to program and perform reviews of their vehicles."
+    }
+  }
+}
