@@ -135,6 +135,7 @@ interface Resources {
   },
   "heroThirdPart": {
     "Title": "He realizado los siguientes proyectos:",
+    "Title2": "Proyectos:",
     "Description": "Descripción"
   },
   "language": {
@@ -163,12 +164,12 @@ interface Resources {
         "description": "Marketplace de compra y venta de productos de primera y segunda mano. Esta nueva versión resalta en una idea más moderna y elegante. Programando..."
       },
       "miPrimerWAT": {
-        "name": "Mi primer WAT",
+        "name": "Primer WAT",
         "description": "Un proyecto que documenta la experiencia de un viaje de trabajo y aventura, compartiendo los mejores momentos, fotos del paisaje, consejos y recomendaciones."
       },
       "revimax": {
         "name": "Revimax",
-        "description": "Un sistema de gestión de revisiones técnicas vehiculares, que permite a los usuarios programar y realizar revisiones de los vehículos de los clientes."
+        "description": "Software privado de gestión de revisiones técnicas vehiculares, que permite a los usuarios programar y realizar revisiones de los vehículos de los clientes."
       }
     }
   }
