@@ -2,23 +2,23 @@
   "projects": {
     "yinDye": {
       "name": "Yin Dye",
-      "description": "This is a project of natural and sustainable colors, where you explore the connection between nature and fashion."
+      "description": "Website for selling dye items, art exhibition and an interactive blog with users. Focused on art, urbanism and giving you a little bit more about YinDye."
     },
     "levelUp": {
       "name": "Level Up",
-      "description": "This is a personal and professional development project, offering resources and tools to improve skills and achieve goals."
+      "description": "*First idea of the Level Up* marketplace for buying and selling products of first and second hand."
     },
-    "giovanniSalvatore": {
-      "name": "Giovanni Salvatore",
-      "description": "This is a web design and development project that showcases the portfolio of a web designer and developer."
+    "levelUp2": {
+      "name": "Level Up v2",
+      "description": "Marketplace for buying and selling products of first and second hand. This new version highlights a more modern and elegant idea. Programming..."
     },
     "miPrimerWAT": {
       "name": "Mi primer WAT",
-      "description": "This is a project that documents the experience of a work and adventure travel, sharing tips and recommendations."
+      "description": "A project that documents the experience of a work and adventure travel, sharing the best moments, photos of the place, tips and recommendations."
     },
     "revimax": {
       "name": "Revimax",
-      "description": "This is a traffic management system for technical vehicles, allowing users to program and perform reviews of their vehicles."
+      "description": "Private software for technical vehicles management, allowing users to program and perform reviews of their vehicles."
     }
   }
 }

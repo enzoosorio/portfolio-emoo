@@ -78,9 +78,30 @@ export const MainCard = ({progressScroll} : MainCardProps) => {
             />
           </div>
           <div className="flex items-center justify-center gap-4 p-2 px-2">
+            <a
+                href="https://www.facebook.com/enzo.osorioortiz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full"
+              >
             <FacebookSvg />
+            </a>
+            <a
+                href="https://github.com/enzoosorio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full"
+              >
             <GithubSvg />
+            </a>
+             <a            
+                href="https://www.linkedin.com/in/enzo-osorio-ortiz-9b12782a2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full"
+              >
             <LinkedinSvg />
+            </a>
           </div>
         </div>
         <div className="relative flex flex-col items-center justify-center w-full gap-8 pb-6">

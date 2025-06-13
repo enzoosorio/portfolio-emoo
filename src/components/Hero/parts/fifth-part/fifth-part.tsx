@@ -94,11 +94,11 @@ export const FifthPart = () => {
       "+=1"
     );
     timeline.from(
-      ".footer",
+      "#footer-contacto",
       {
         y: 1000,
         opacity: 1,
-        duration: 5,
+        duration: 2,
         // delay: 1.5,
       },
       "+=1"
@@ -224,7 +224,7 @@ export const FifthPart = () => {
             </button>
           </div>
         </form>
-        <Footer/>
+        <Footer id="footer-contacto"/>
       </div>
           )
         }

@@ -2,23 +2,23 @@
   "projects": {
     "yinDye": {
       "name": "Yin Dye",
-      "description": "Un proyecto de tintes naturales y sostenibles, donde se explora la conexión entre la naturaleza y la moda."
+      "description": "Página web de venta de prendas tie dye, exposición de arte y un blog interactivo con los usuarios. Enfocada al arte, urbanismo y a dar a conocer un poco más del propósito de YinDye."
     },
     "levelUp": {
       "name": "Level Up",
-      "description": "Un proyecto de desarrollo personal y profesional, que ofrece recursos y herramientas para mejorar habilidades y alcanzar metas."
+      "description": "*Primera idea del proyecto Level Up*. Marketplace de compra y venta de productos de primera y segunda mano."
     },
-    "giovanniSalvatore": {
-      "name": "Giovanni Salvatore",
-      "description": "Un proyecto de diseño y desarrollo web, que muestra el portafolio de un diseñador y desarrollador web."
+    "levelUp2": {
+      "name": "Level Up v2",
+      "description": "Marketplace de compra y venta de productos de primera y segunda mano. Esta nueva versión resalta en una idea más moderna y elegante. Programando..."
     },
     "miPrimerWAT": {
       "name": "Mi primer WAT",
-      "description": "Un proyecto que documenta la experiencia de un viaje de trabajo y aventura, compartiendo consejos y recomendaciones."
+      "description": "Un proyecto que documenta la experiencia de un viaje de trabajo y aventura, compartiendo los mejores momentos, fotos del paisaje, consejos y recomendaciones."
     },
     "revimax": {
       "name": "Revimax",
-      "description": "Un sistema de gestión de revisiones técnicas vehiculares, que permite a los usuarios programar y realizar revisiones de sus vehículos."
+      "description": "Software privado de gestión de revisiones técnicas vehiculares, que permite a los usuarios programar y realizar revisiones de los vehículos de los clientes."
     }
   }
 }

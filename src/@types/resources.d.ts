@@ -5,7 +5,8 @@ interface Resources {
     "p1": "Desde pequeño, he aprendido a enfrentar desafíos con confianza y creatividad. He tenido la fortuna de practicar diversas actividades como entrenar diferentes deportes, pasear en bicicleta por la ciudad, tocar el ukelele y el piano, entre otras, lo que me ha permitido desarrollar versatilidad en distintos campos.",
     "p2": "Me considero una persona muy perseverante: una vez que me propongo un objetivo, trabajo con constancia hasta lograrlo. Disfruto aprendiendo nuevas habilidades y, cuando la ruta inicial no conduce al éxito, evalúo alternativas y ajusto mi enfoque para encontrar soluciones eficaces.",
     "p3": "Además, destaco por mi disciplina, empatía y resiliencia. En cada proyecto procuro anticipar necesidades, ofrecer experiencias inclusivas y entregar resultados de calidad que generen verdadero valor para el cliente; un proyecto que valga totalmente la pena.",
-    "scrollMessage": "Scrollea para ver más imágenes!",
+    "scrollMessage": "Scroll vertical: revelar imágenes",
+    "scrollMessage2": "Scroll horizontal: ver imágenes",
     "images": {
       "yoConGranito": "Foto casual",
       "yoConYin": "Con yin (mi gato)",
@@ -76,7 +77,7 @@ interface Resources {
         "acceptance_testing": "PAU",
         "stress_testing": "Pruebas de estrés",
         "security_testing": "Pruebas de seguridad",
-        "accessibility_testing": "Pruebas de accesibilidad (a11y)",
+        "accessibility_testing": "Pruebas de accesibilidad",
         "usability_testing": "Pruebas de usabilidad",
         "automated_testing": "Pruebas automatizadas"
       }
@@ -151,23 +152,23 @@ interface Resources {
     "projects": {
       "yinDye": {
         "name": "Yin Dye",
-        "description": "Un proyecto de tintes naturales y sostenibles, donde se explora la conexión entre la naturaleza y la moda."
+        "description": "Página web de venta de prendas tie dye, exposición de arte y un blog interactivo con los usuarios. Enfocada al arte, urbanismo y a dar a conocer un poco más del propósito de YinDye."
       },
       "levelUp": {
         "name": "Level Up",
-        "description": "Un proyecto de desarrollo personal y profesional, que ofrece recursos y herramientas para mejorar habilidades y alcanzar metas."
+        "description": "*Primera idea del proyecto Level Up*. Marketplace de compra y venta de productos de primera y segunda mano."
       },
-      "giovanniSalvatore": {
-        "name": "Giovanni Salvatore",
-        "description": "Un proyecto de diseño y desarrollo web, que muestra el portafolio de un diseñador y desarrollador web."
+      "levelUp2": {
+        "name": "Level Up v2",
+        "description": "Marketplace de compra y venta de productos de primera y segunda mano. Esta nueva versión resalta en una idea más moderna y elegante. Programando..."
       },
       "miPrimerWAT": {
         "name": "Mi primer WAT",
-        "description": "Un proyecto que documenta la experiencia de un viaje de trabajo y aventura, compartiendo consejos y recomendaciones."
+        "description": "Un proyecto que documenta la experiencia de un viaje de trabajo y aventura, compartiendo los mejores momentos, fotos del paisaje, consejos y recomendaciones."
       },
       "revimax": {
         "name": "Revimax",
-        "description": "Un sistema de gestión de revisiones técnicas vehiculares, que permite a los usuarios programar y realizar revisiones de sus vehículos."
+        "description": "Un sistema de gestión de revisiones técnicas vehiculares, que permite a los usuarios programar y realizar revisiones de los vehículos de los clientes."
       }
     }
   }

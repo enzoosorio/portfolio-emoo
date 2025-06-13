@@ -4,7 +4,8 @@
     "p1" : "From a very young age, I have learned to face challenges with confidence and creativity. I have had luck in practicing various activities such as training different sports, walking in a bike by the city, playing the ukelele and piano, among others, which allowed me to develop versatility in different fields.",
     "p2" : "I consider myself a very perseverant person: once I propose an objective, I work with constant determination until I achieve it. I enjoy learning new skills and, when the initial route does not lead to success, I evaluate alternatives and adjust my approach to find effective solutions.",
     "p3" : "In addition, I highlight my discipline, empathy, and resilience. In each project, I anticipate needs, offer inclusive experiences, and deliver quality results that generate true value for the client; a project worthwhile in total.",
-    "scrollMessage" : "Scroll to see more images!",
+    "scrollMessage" : "Vertical Scroll : reveal images",
+    "scrollMessage2" : "Horizontal Scroll: view images",
     "images" : {
         "yoConGranito" : "Random photo",
         "yoConYin" : "With yin (my cat)",

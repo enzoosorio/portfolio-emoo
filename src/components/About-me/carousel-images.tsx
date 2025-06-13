@@ -99,7 +99,7 @@ const scrollWrapperRef = useRef<HTMLDivElement | null>(null);
         className="images-container absolute 
         top-[55%]  translate-y-[100px] 
          flex justify-start 
-        left-[2%] pr-10 w-full h-[600px]  overflow-auto ">
+        left-[2%] pr-10 w-full h-[600px]  overflow-x-auto overflow-y-hidden ">
           <div 
           ref={scrollWrapperRef}
           className={`container-images  drag-container 
@@ -155,10 +155,9 @@ const scrollWrapperRef = useRef<HTMLDivElement | null>(null);
               );
             })}
           </div>
-          <div className='md:hidden absolute -bottom-6 left-0 right-0 m-auto w-max'>
-              <p className='text-lg text-orange-500 font-space-grotesk font-semibold'>{t("scrollMessage")}</p>
-          </div>
         </div>
+          
+        
     )}
    </Translation>
   )

@@ -99,6 +99,9 @@ export const MenuItems2 = ({ isMenuOpen, items }: MenuItemsProps) => {
   const handleRedirect = (url: string, key: string) => {
     setSelectedItem(key);
     navigate(url);
+    setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 500);
   };
 
   return (

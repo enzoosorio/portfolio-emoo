@@ -58,7 +58,7 @@
       "acceptance_testing": "UAT",
       "stress_testing": "Stress Testing",
       "security_testing": "Security Testing",
-      "accessibility_testing": "Accessibility Testing (a11y)",
+      "accessibility_testing": "Accessibility Testing",
       "usability_testing": "Usability Testing",
       "automated_testing": "Automated Testing"
     }

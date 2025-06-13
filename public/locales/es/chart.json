@@ -58,7 +58,7 @@
   "acceptance_testing": "PAU",
   "stress_testing": "Pruebas de estrés",
   "security_testing": "Pruebas de seguridad",
-  "accessibility_testing": "Pruebas de accesibilidad (a11y)",
+  "accessibility_testing": "Pruebas de accesibilidad",
   "usability_testing": "Pruebas de usabilidad",
   "automated_testing": "Pruebas automatizadas"
 }
