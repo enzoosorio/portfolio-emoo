@@ -4,8 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Draggable } from "gsap/Draggable";
 import { useGSAP } from "@gsap/react";
 import { InertiaPlugin } from "gsap/InertiaPlugin";
-import { useCallback, useMemo, useRef, useState } from "react";
-import { photos } from "../../lib/photos";
+import { useRef } from "react";
 import { Translation } from "react-i18next";
 import { TextContainer } from "./text-container";
 import { CarouselImages } from "./carousel-images";
@@ -83,9 +82,9 @@ export const MainAboutMe = () => {
       ".container-title",
       {
         scale: 0.5,
-        xPercent: -50,
+        xPercent: -30,
         yPercent: -40,
-        duration: 1,
+        duration: .5,
         ease: "power1",
       },
       1.3
@@ -121,7 +120,7 @@ export const MainAboutMe = () => {
         stagger: 0.9,
         ease: "power1",
       },
-      ">0.1"
+      "text-appear+=1.3"
     );
 
     tl.to(
@@ -129,11 +128,12 @@ export const MainAboutMe = () => {
       {
         rotate: 5,
         rotateZ: 15,
+        x: 100,
         skewX: 10,
         duration: 0.8,
         ease: "back",
       },
-      "text-appear+=1"
+      "text-appear+=.5"
     );
     tl.to(
       "#firt-card-about-me",
@@ -159,18 +159,19 @@ export const MainAboutMe = () => {
       },
       "text-appear+=2.6"
     );
+    tl.addLabel("cards-swap");
     tl.to(
       "#firt-card-about-me",
       {
-        left: 10,
-        x: `${finalX + 333}px`,
+        left: 0,
+        x: `${finalX * 1.23}px`,
         yPercent: -45,
         width: "304px",
         rotate: 3,
         rotateZ: -15,
         skewX: 0,
         skewY: 0,
-        duration: 0.8,
+        duration: 0.5,
         ease: "back",
       },
       "text-appear+=3.4"
@@ -179,32 +180,30 @@ export const MainAboutMe = () => {
       ".images-container",
       {
         yPercent: -72,
-        // opacity: 0,
-        duration: 0.8,
+        duration: 0.3,
         ease: "power4.out",
       },
-      "text-appear+=4"
+      "text-appear+=3.5"
     );
     tl.to(
       ".text-container",
       {
         yPercent: -200,
-        // opacity: 0,
-        duration: 0.8,
+        duration: 0.2,
         ease: "power4.out",
       },
-      "text-appear+=4"
+      "text-appear+=3.5"
     );
 
     tl.from(
       ".images-scroll",
       {
         y: 1000,
-        duration: 0.5,
-        stagger: 0.2,
+        duration: 0.3,
+        stagger: 0.15,
         ease: "power4.out",
       },
-      "text-appear+=4.5"
+      "text-appear+=3.5"
     );
 
     tl.to(
@@ -215,7 +214,7 @@ export const MainAboutMe = () => {
         duration: 0.2,
         ease: "power4.out",
       },
-      "text-appear+=5.2"
+      "text-appear+=4"
     );
     tl.to(
       ".image-main-scroll",
@@ -225,17 +224,17 @@ export const MainAboutMe = () => {
         duration: 0.2,
         ease: "power4.out",
       },
-      "text-appear+=5.2"
+      "text-appear+=4"
     );
   }, []);
 
   return (
-    <main className="first-part-about-me w-full h-[1000vh] flex flex-col items-center justify-start -mt-24">
+    <main className="first-part-about-me w-full h-[1700vh] flex flex-col items-center justify-start -mt-24">
       <section className="first-section-about-me relative h-screen w-full overflow-hidden ">
         <Translation ns={["aboutMe"]}>
           {(t) => (
             <>
-              <div className="container-title absolute top-10 left-1/4 -translate-x-1/2 ">
+              <div className="container-title absolute top-10 left-10 md:left-1/4 md:-translate-x-1/2 ">
                 <h1 className="text-8xl font-bold text-left text-primary-blue  font-space-grotesk">
                   {t("title")}
                 </h1>
@@ -247,7 +246,7 @@ export const MainAboutMe = () => {
               <CardImage
                 id="firt-card-about-me"
                 classNameImg="object-cover "
-                className="absolute top-1/2 w-[304px] -translate-y-1/2 z-50 left-[80%] -translate-x-1/2 "
+                className="absolute top-1/2 w-[250px] h-[340px] md:h-auto md:w-[304px] -translate-y-1/2 z-50 left-[90%] md:left-[80%] -translate-x-1/2 "
                 imageSrc={"/images/about-me/mini-enzo.webp"}
                 alt={t("aboutMe:images.miniMe")}
                 titleCard={t("aboutMe:images.miniMe")}

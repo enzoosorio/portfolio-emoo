@@ -104,7 +104,7 @@ const scrollWrapperRef = useRef<HTMLDivElement | null>(null);
           ref={scrollWrapperRef}
           className={`container-images  drag-container 
           flex items-center md:overflow-x-hidden overflow-y-hidden px-4 py-4 gap-1 
-          justify-start h-full w-[80%] mx-auto`}
+          justify-start h-full w-full`}
            onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
@@ -154,6 +154,9 @@ const scrollWrapperRef = useRef<HTMLDivElement | null>(null);
                 </>
               );
             })}
+          </div>
+          <div className='md:hidden absolute -bottom-6 left-0 right-0 m-auto w-max'>
+              <p className='text-lg text-orange-500 font-space-grotesk font-semibold'>{t("scrollMessage")}</p>
           </div>
         </div>
     )}
