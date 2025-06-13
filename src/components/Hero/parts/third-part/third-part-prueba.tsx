@@ -125,7 +125,7 @@ export const ThirdPart = () => {
           <Translation ns={["projects_realized"]}>
             {
               (t) => (
-               <div className="relative flex flex-row lg:flex-col bg-amber-300 items-center gap-4 w-full">
+               <div className="relative flex flex-row lg:flex-col items-center gap-4 w-full">
                  <ul className="w-[75%] lg:w-full grid grid-cols-3 lg:flex gap-2  lg:flex-nowrap lg:flex-col items-start justify-start shadow-xl p-3">
             {projects_realized.map((project) => (
                 (
@@ -151,7 +151,7 @@ export const ThirdPart = () => {
               {projects_realized.length > 0 && projects_realized.map((project) => (
                 <div 
                 key={project.project_id}
-                className={`absolute top-[50%] lg:top-auto lg:-bottom-32 -translate-x-1/2 -translate-y-1/2 bg-amber-600 w-[80px] sm:w-[120px] lg:w-auto   ${projectIsFixed === project.project_id ? "lg:left-1/2 left-[88%]" : "left-[240%]"} transition-all flex flex-row flex-wrap lg:flex-nowrap items-center justify-center gap-6`}>
+                className={`absolute top-[50%] lg:top-auto lg:-bottom-32 -translate-x-1/2 -translate-y-1/2 w-[80px] sm:w-[120px] lg:w-auto   ${projectIsFixed === project.project_id ? "lg:left-1/2 left-[88%]" : "left-[240%]"} transition-all flex flex-row flex-wrap lg:flex-nowrap items-center justify-center gap-6`}>
                   {project.project_github && (
                     <a
                       href={project.project_github}
