@@ -1,4 +1,20 @@
 interface Resources {
+  "aboutMe": {
+    "title": "Acerca",
+    "title2": "de mí",
+    "p1": "Desde pequeño, he aprendido a enfrentar desafíos con confianza y creatividad. He tenido la fortuna de practicar diversas actividades como entrenar diferentes deportes, pasear en bicicleta por la ciudad, tocar el ukelele y el piano, entre otras, lo que me ha permitido desarrollar versatilidad en distintos campos.",
+    "p2": "Me considero una persona muy perseverante: una vez que me propongo un objetivo, trabajo con constancia hasta lograrlo. Disfruto aprendiendo nuevas habilidades y, cuando la ruta inicial no conduce al éxito, evalúo alternativas y ajusto mi enfoque para encontrar soluciones eficaces.",
+    "p3": "Además, destaco por mi disciplina, empatía y resiliencia. En cada proyecto procuro anticipar necesidades, ofrecer experiencias inclusivas y entregar resultados de calidad que generen verdadero valor para el cliente; un proyecto que valga totalmente la pena.",
+    "images": {
+      "yoConGranito": "Foto casual",
+      "yoConYin": "Con yin (mi gato)",
+      "miniMe": "Mini yo",
+      "conciertoBillings": "Concierto en Billings",
+      "arquero": "Campeonato de balonmano",
+      "redPanda": "Me gusta tomar fotos!",
+      "landscape": "Mi primer viaje"
+    }
+  },
   "chart": {
     "tecnologias": {
       "Frontend": {

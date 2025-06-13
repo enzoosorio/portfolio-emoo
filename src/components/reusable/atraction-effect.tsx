@@ -1,7 +1,7 @@
 import  { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import MorphSVGPlugin from "gsap/MorphSVGPlugin";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 
 interface AtractionEffectProps{
   labelLanguage : string
@@ -11,7 +11,8 @@ export const AtractionEffect= ({ labelLanguage } : AtractionEffectProps) => {
   gsap.registerPlugin(MorphSVGPlugin);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const childRef = useRef<HTMLAnchorElement>(null);
+  const childRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -105,8 +106,13 @@ export const AtractionEffect= ({ labelLanguage } : AtractionEffectProps) => {
       ref={containerRef}
       className="relative flex items-center justify-center w-40 h-40 md:w-64 md:h-64 lg:w-72 lg:h-72 border border-white/25 rounded-2xl p-4 overflow-hidden"
     >
-      <Link
-        to={"/about"}
+      <button
+        onClick={() => {
+          navigate("/about-me");
+          setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, 100);
+        }}
         ref={childRef}
         className="cursor-pointer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] text-base md:text-2xl text-white font-ibm-plex-mono rounded-full bg-white/25 flex items-center justify-center"
       >
@@ -126,7 +132,7 @@ export const AtractionEffect= ({ labelLanguage } : AtractionEffectProps) => {
             d="M76.3674 40.5L38.7661 3.06297L40.8828 0.937012L82.126 42L40.8828 83.063L38.7661 80.937L76.3674 43.5H0V40.5H76.3674Z"
           />
         </svg>
-      </Link>
+      </button>
     </div>
   );
 };

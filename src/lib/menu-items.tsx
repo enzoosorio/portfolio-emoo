@@ -1,5 +1,6 @@
 import type { MenuItem } from "../components/menu/menu-items2";
 
+
 export const menuSelectItems: MenuItem[] = [
   {
     i18nKey: "home",
@@ -8,7 +9,7 @@ export const menuSelectItems: MenuItem[] = [
     cName: "nav-links",
   },
   {
-    i18nKey: "aboutMe",
+    i18nKey: "about-me",
     scrollType: "Pages",
     url: "/about-me",
     cName: "nav-links",

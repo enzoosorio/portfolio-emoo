@@ -57,7 +57,7 @@ export const SecondCard = () => {
       className="sp-text sp-text1 text-base md:text-lg lg:text-2xl 2xl:text-3xl leading-10 xl:leading-14 font-space-grotesk opacity-0 text-pretty pt-20 md:pt-0  lg:w-8/12 pl-2 text-white">
         {t("firstParagraph")}
       </p>
-      <p className="sp-text text-base lg:text-2xl leading-10 text-white text-pretty opacity-0 font-space-grotesk pl-2  md:w-96">
+      <p className="sp-text sp-text2 text-base lg:text-2xl leading-10 text-white text-pretty opacity-0 font-space-grotesk pl-2  md:w-96">
         &#40;
         <span>{t("secondParagraph")}</span>
         &#41;
