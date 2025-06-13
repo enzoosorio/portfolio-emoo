@@ -43,7 +43,6 @@ export const MainAboutMe = () => {
       end: "bottom 48px",
       scrub: true,
       pin: ".first-section-about-me",
-      // markers: true,
     });
 
     let tl = gsap.timeline({
@@ -52,7 +51,6 @@ export const MainAboutMe = () => {
         start: "top top",
         end: "bottom top",
         scrub: true,
-        // markers: true,
       },
     });
 
@@ -63,7 +61,6 @@ export const MainAboutMe = () => {
       start: "top top",
       end: "bottom top",
       scrub: true,
-      markers: true,
     });
 
     tl.from(
