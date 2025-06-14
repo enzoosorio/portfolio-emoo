@@ -27,11 +27,9 @@ export const FifthPart = () => {
       })
       .then(
         () => {
-          console.log('SUCCESS!');
           setFormState("success");
         },
         (error) => {
-          console.log('FAILED...', error.text);
           setFormState("error");
         },
       )

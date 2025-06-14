@@ -35,9 +35,8 @@ export const MainAboutMe = () => {
 
     const cardRect = refCard.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    // 2) calcular la distancia desde el borde izquierdo del contenedor
     const finalX = cardRect.left - containerRect.left;
-    console.log({ finalX });
+    
     ScrollTrigger.create({
       trigger: ".first-part-about-me",
       start: "top 48px",
@@ -76,7 +75,6 @@ export const MainAboutMe = () => {
           const { conditions } = ctx;
           const small = conditions?.small ?? false;
           const medium = conditions?.medium ?? false;
-          console.log({small})
           tl.from(
       "#firt-card-about-me",
       {

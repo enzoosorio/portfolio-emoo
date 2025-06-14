@@ -30,7 +30,6 @@ export const MenuItems2 = ({ isMenuOpen, items }: MenuItemsProps) => {
 
   useEffect(() => {
       const loc = location.pathname.replace("/", "").split("/")[1];
-      console.log({loc})
       if(loc){
         setSelectedItem(loc)
       }

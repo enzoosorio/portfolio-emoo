@@ -13,20 +13,24 @@ import RootLayout from './app/RootLayout.tsx';
 import './i18n.ts'
 import NotFound from './components/errors/notFound.tsx';
 import { validateLang } from './lib/validateLang.ts';
-import i18next from 'i18next';
+import { getLanguage } from './lib/getLanguage.ts';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/es" replace />,
+    loader: () => {
+      const languagee = getLanguage()
+      console.log({languagee})
+      return redirect(`/${languagee}`)
+    }
   },
   {
     path: "/about-me",
-    errorElement: <NotFound />,
     loader: () => {
-      const currentLanguage = i18next.language
-      return redirect(`/${currentLanguage}/about-me`);
-    },
+      const languagee = getLanguage()
+      console.log({languagee})
+      return redirect(`/${languagee}/about-me`)
+    }
   },
  {
     path: "/:lang",

@@ -25,7 +25,6 @@ export const SelectLanguage = ({
 }: SelectLanguageProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const getLanguage = () => i18next.language || window.localStorage.i18nextLng;
   const navigate = useNavigate();
   const location = useLocation();
   const { lang } = useParams(); // ← detectar idioma actual
@@ -94,10 +93,6 @@ export const SelectLanguage = ({
     }
   );
 
-  useEffect(() => {
-    const language = getLanguage();
-    console.log({ language });
-  }, []);
 
   const handleChangeLanguage = (newLang: string) => {
     if (newLang === lang) return;
