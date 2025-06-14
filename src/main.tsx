@@ -4,8 +4,7 @@ import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
-  redirect,
-  Navigate
+  redirect
 } from "react-router";
 import Hero from './app/Hero.tsx';
 import { AboutMe } from './app/About-me.tsx';

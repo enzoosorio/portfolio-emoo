@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { Translation } from "react-i18next";

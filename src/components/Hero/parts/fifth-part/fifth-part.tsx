@@ -29,7 +29,7 @@ export const FifthPart = () => {
         () => {
           setFormState("success");
         },
-        (error) => {
+        () => {
           setFormState("error");
         },
       )
