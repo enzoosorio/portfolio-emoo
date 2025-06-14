@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { Translation } from "react-i18next";
@@ -23,6 +23,7 @@ export const MenuItems2 = ({ isMenuOpen, items }: MenuItemsProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+
   // Reiniciar refs si cambian los items
   useEffect(() => {
     letterItemsRef.current = [];
@@ -41,6 +42,7 @@ export const MenuItems2 = ({ isMenuOpen, items }: MenuItemsProps) => {
       letterItemsRef.current.push(el);
     }
   };
+
 
   // Inicializar timeline solo una vez
   useEffect(() => {
@@ -68,6 +70,7 @@ export const MenuItems2 = ({ isMenuOpen, items }: MenuItemsProps) => {
       )
       
   }, []);
+
 
   // Controlar play / reverse según isMenuOpen
   useEffect(() => {
@@ -130,20 +133,21 @@ export const MenuItems2 = ({ isMenuOpen, items }: MenuItemsProps) => {
               {item.scrollType === "Pages" ? (
                 <button
                   onClick={() => handleRedirect(item.url, item.i18nKey)}
-                  className="button-item w-full text-left translate-y-[-35px] cursor-pointer"
+                  className="button-item w-full  text-left translate-y-[-35px] cursor-pointer"
                 >
                   {t(item.i18nKey as any)}
                 </button>
-              ) : (
+              ) :  (
                 <button
                   onClick={() =>
                     handleSamePageScroll(item.url, item.variableHeight ?? 0)
                   }
-                  className="button-item w-full text-left translate-y-[-35px] cursor-pointer"
+                  className={`button-item w-full ${selectedItem === 'about-me' ? "hidden" : "block"} text-left translate-y-[-35px] cursor-pointer`}
                 >
                   {t(item.i18nKey as any)}
                 </button>
-              )}
+              ) } 
+              
             </li>
           ))}
         </ul>
