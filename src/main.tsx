@@ -18,17 +18,15 @@ const router = createBrowserRouter([
   {
     path: "/",
     loader: () => {
-      const languagee = getLanguage()
-      const redirectt = languagee ?? "/es"
-      return redirect(`/${redirectt}`)
+      const languagee = getLanguage() || "es"
+      return redirect(`/${languagee}`)
     }
   },
   {
     path: "/about-me",
     loader: () => {
-      const languagee = getLanguage()
-      const redirectt = languagee ?? "/es"
-      return redirect(`/${redirectt}/about-me`)
+      const languagee = getLanguage() || "es"
+      return redirect(`/${languagee}/about-me`)
     }
   },
  {
